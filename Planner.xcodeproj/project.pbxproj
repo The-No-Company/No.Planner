@@ -31,6 +31,10 @@
 		D44C2BFD271780D200281A9D /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = D44C2BFC271780D200281A9D /* YandexMobileMetrica */; };
 		D44C2C002717810100281A9D /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BFF2717810100281A9D /* AddView.swift */; };
 		D44C2C02271781AD00281A9D /* logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C01271781AD00281A9D /* logic.swift */; };
+		D44C2C05271785EF00281A9D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D44C2C04271785EF00281A9D /* Launch Screen.storyboard */; };
+		D44C2C07271790F700281A9D /* taskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C06271790F700281A9D /* taskView.swift */; };
+		D44C2C0B271821BD00281A9D /* gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C0A271821BD00281A9D /* gestures.swift */; };
+		D44C2C0E271825C300281A9D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C0D271825C300281A9D /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +77,10 @@
 		D44C2BEB2717806700281A9D /* db.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = db.swift; sourceTree = "<group>"; };
 		D44C2BFF2717810100281A9D /* AddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		D44C2C01271781AD00281A9D /* logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logic.swift; sourceTree = "<group>"; };
+		D44C2C04271785EF00281A9D /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		D44C2C06271790F700281A9D /* taskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskView.swift; sourceTree = "<group>"; };
+		D44C2C0A271821BD00281A9D /* gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gestures.swift; sourceTree = "<group>"; };
+		D44C2C0D271825C300281A9D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +146,7 @@
 				D44C2BAC27177F0500281A9D /* PlannerApp.swift */,
 				D44C2BAE27177F0500281A9D /* Start.swift */,
 				D44C2BB027177F0700281A9D /* Assets.xcassets */,
+				D44C2C04271785EF00281A9D /* Launch Screen.storyboard */,
 				D44C2BB227177F0700281A9D /* Preview Content */,
 			);
 			path = Planner;
@@ -175,6 +184,7 @@
 				D44C2BDF27177FE400281A9D /* colors.swift */,
 				D44C2BDD27177FE400281A9D /* search.swift */,
 				D44C2BDE27177FE400281A9D /* strings.swift */,
+				D44C2C0A271821BD00281A9D /* gestures.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -182,6 +192,8 @@
 		D44C2BD727177F6600281A9D /* pages */ = {
 			isa = PBXGroup;
 			children = (
+				D44C2C0C271825B600281A9D /* settings */,
+				D44C2C03271785C500281A9D /* tasks */,
 				D44C2BFE2717810100281A9D /* add */,
 				D44C2BD927177F9900281A9D /* HomeView.swift */,
 			);
@@ -212,6 +224,22 @@
 				D44C2BFF2717810100281A9D /* AddView.swift */,
 			);
 			path = add;
+			sourceTree = "<group>";
+		};
+		D44C2C03271785C500281A9D /* tasks */ = {
+			isa = PBXGroup;
+			children = (
+				D44C2C06271790F700281A9D /* taskView.swift */,
+			);
+			path = tasks;
+			sourceTree = "<group>";
+		};
+		D44C2C0C271825B600281A9D /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				D44C2C0D271825C300281A9D /* SettingsView.swift */,
+			);
+			path = settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +364,7 @@
 				D44C2BB427177F0700281A9D /* Preview Assets.xcassets in Resources */,
 				D44C2BE827177FED00281A9D /* SpectralMedium.ttf in Resources */,
 				D44C2BB127177F0700281A9D /* Assets.xcassets in Resources */,
+				D44C2C05271785EF00281A9D /* Launch Screen.storyboard in Resources */,
 				D44C2BE927177FED00281A9D /* SourceCodeRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -365,13 +394,16 @@
 				D44C2BAF27177F0500281A9D /* Start.swift in Sources */,
 				D44C2BE327177FE400281A9D /* colors.swift in Sources */,
 				D44C2C02271781AD00281A9D /* logic.swift in Sources */,
+				D44C2C0B271821BD00281A9D /* gestures.swift in Sources */,
 				D44C2BE227177FE400281A9D /* strings.swift in Sources */,
 				D44C2BEC2717806700281A9D /* db.swift in Sources */,
+				D44C2C0E271825C300281A9D /* SettingsView.swift in Sources */,
 				D44C2BE127177FE400281A9D /* search.swift in Sources */,
 				D44C2BDC27177FD700281A9D /* settings.swift in Sources */,
 				D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */,
 				D44C2BE427177FE400281A9D /* buttons.swift in Sources */,
 				D44C2C002717810100281A9D /* AddView.swift in Sources */,
+				D44C2C07271790F700281A9D /* taskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,6 +571,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -571,6 +604,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
