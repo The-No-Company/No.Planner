@@ -35,7 +35,7 @@ struct HomeView: View {
                     
                     self.showing_add.toggle()
                 }, label: {
-                    Image(systemName: "plus")
+                    Image(systemName: "gear")
                         .font(.system(size: 20, weight: .medium, design: .rounded))
                         .foregroundColor(.white)
                 })
@@ -59,9 +59,25 @@ struct HomeView: View {
                 Spacer()
             }else{
                 ScrollView(.vertical, showsIndicators: false){
-                    ForEach(self.logic.planner.tasks.reversed(), id: \.self){ task in
-                        TaskView(id: task.id, text: task.text, time: task.display_date, tags_array: task.tags)
+                    ForEach(self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow}), id: \.self) { key in
+                        VStack(spacing: 5){
+                            if (self.logic.getDateToString(date: key) != ""){
+                                HStack{
+                                    Text(self.logic.getDateToString(date: key))
+                                        .font(Font.custom("Spectral-Medium", size: 26))
+                                    Spacer()
+                                }
+                            }
+                            VStack(spacing: 10){
+                                ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
+                                    TaskView(id: task.id, text: task.text, time: task.display_date, tags_array: task.tags)
+                                }
+                            }
+                        }
+                        
                     }
+                    
+                    
                     Spacer()
                 }
                 .padding(.top)
@@ -70,7 +86,7 @@ struct HomeView: View {
             
             
         }.sheet(isPresented: self.$showing_add) {
-            AddView()
+            SettingsView()
         }
         .onAppear{
             self.logic.planner.getTasks()

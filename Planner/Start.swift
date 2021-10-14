@@ -24,7 +24,7 @@ struct Start: View {
                     Circle()
                         .fill(Color.white)
                     
-                    Image(systemName: "gear")
+                    Image(systemName: "plus")
                         .font(.system(size: 20, weight: .medium, design: .rounded))
                         .foregroundColor(.black)
                 }.frame(width: 35, height: 35, alignment: .center)
@@ -40,7 +40,7 @@ struct Start: View {
             self.logic.getDate()
         }
         .sheet(isPresented: self.$showing_add) {
-            SettingsView()
+            AddView()
         }
         .onAppear{
             self.logic.getDate()

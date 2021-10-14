@@ -70,15 +70,21 @@ class RealmDB: ObservableObject, Identifiable {
                 for tag in objects[i].tags{
                     tags.append(tag)
                 }
+                
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm"
+                let result = formatter.string(from: objects[i].date)
+                
                 tmp_tasks.append(Planner.Tasks(id: objects[i].id,
                                                text: objects[i].text,
                                                date: objects[i].date,
-                                               display_date: objects[i].display_date,
+                                               display_date: result,
                                                tags: tags))
                 
             }
             
             self.logic.planner.tasks = tmp_tasks
+            self.logic.planner.groupTasks()
             
             
             
@@ -92,7 +98,7 @@ class RealmDB: ObservableObject, Identifiable {
     
     func addTasks(id: Int, text: String, date: Date, tags: [String]){
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd.MM.yyyy hh:mm"
+        formatter.dateFormat = "dd.MM.yyyy HH:mm"
         let result = formatter.string(from: date)
         
         let task = Task()

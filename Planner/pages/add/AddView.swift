@@ -77,6 +77,7 @@ struct AddView: View {
                         .background(Color.secondary.opacity(0.2))
                         .cornerRadius(8)
                         .frame(height: 500)
+                        .disableAutocorrection(true)
                         .tag(2)
                         .introspectTextView { field in
                             if (self.openView == false){
@@ -100,96 +101,103 @@ struct AddView: View {
 struct ColorView: View {
     
     @Binding var color : String
+    @ObservedObject var logic: Logic = LogicAPI
     
     var body: some View {
-        HStack(spacing: 10){
-            
-            Button(action: {
-                self.color = "none"
-            }, label: {
-                ZStack {
-                    Circle()
-                        .fill(Color.init(hex: "2F2F2F"))
-
-                    if (self.color == "none"){
+        ScrollView(.horizontal, showsIndicators: false){
+            HStack(spacing: 10){
+                
+                Button(action: {
+                    self.color = "none"
+                }, label: {
+                    ZStack {
                         Circle()
-                            .strokeBorder(Color.yellow, lineWidth: 2)
+                            .fill(Color.init(hex: "2F2F2F"))
+                        
+                        if (self.color == "none"){
+                            Circle()
+                                .strokeBorder(Color.yellow, lineWidth: 2)
+                        }
                     }
-                }
-                .frame(width: 30, height: 30)
-            }).buttonStyle(ScaleButtonStyle())
-            .tag(1)
-            
-          
-            Button(action: {
-                self.color = "green"
-            }, label: {
-                ZStack {
-                    Circle()
-                        .fill(Color.init(hex: "2ECC71"))
-
-                    if (self.color == "green"){
-                        Circle()
-                            .strokeBorder(Color.yellow, lineWidth: 2)
-                    }
-                }
-                .frame(width: 30, height: 30)
-            }).buttonStyle(ScaleButtonStyle())
-            
-          
-            
-            Button(action: {
-                self.color = "blue"
-            }, label: {
-                ZStack {
-                    Circle()
-                        .fill(Color.init(hex: "3498DB"))
-
-                    if (self.color == "blue"){
-                        Circle()
-                            .strokeBorder(Color.yellow, lineWidth: 2)
-                    }
-                }
-                .frame(width: 30, height: 30)
-            }).buttonStyle(ScaleButtonStyle())
-            
-          
-            
-            
-            Button(action: {
-                self.color = "red"
-            }, label: {
-                ZStack {
-                    Circle()
-                        .fill(Color.init(hex: "E74C3C"))
-
-                    if (self.color == "red"){
-                        Circle()
-                            .strokeBorder(Color.yellow, lineWidth: 2)
-                    }
-                }
-                .frame(width: 30, height: 30)
-            }).buttonStyle(ScaleButtonStyle())
-            
-          
-            
-            
-            Button(action: {
-                self.color = "orange"
-            }, label: {
-                ZStack {
-                    Circle()
-                        .fill(Color.init(hex: "F39C12"))
-
-                    if (self.color == "orange"){
-                        Circle()
-                            .strokeBorder(Color.yellow, lineWidth: 2)
-                    }
-                }
-                .frame(width: 30, height: 30)
-            }).buttonStyle(ScaleButtonStyle())
-            
-          
+                    .frame(width: 30, height: 30)
+                }).buttonStyle(ScaleButtonStyle())
+                    
+                
+                Button(action: {
+                    self.color = "green"
+                }, label: {
+                    Text(self.logic.getIcon(name: "green"))
+                        .font(.custom("SourceCodePro-Regular", size: 14))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Color.init(hex: "2ECC71"))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(self.color == "green" ? Color.yellow : Color.clear, lineWidth: 2)
+                        )
+                    
+                }).buttonStyle(ScaleButtonStyle())
+                
+        
+                
+              
+                Button(action: {
+                    self.color = "blue"
+                }, label: {
+                    Text(self.logic.getIcon(name: "blue"))
+                        .font(.custom("SourceCodePro-Regular", size: 14))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Color.init(hex: "3498DB"))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(self.color == "blue" ? Color.yellow : Color.clear, lineWidth: 2)
+                        )
+                    
+                }).buttonStyle(ScaleButtonStyle())
+                
+        
+                Button(action: {
+                    self.color = "red"
+                }, label: {
+                    Text(self.logic.getIcon(name: "red"))
+                        .font(.custom("SourceCodePro-Regular", size: 14))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Color.init(hex: "E74C3C"))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(self.color == "red" ? Color.yellow : Color.clear, lineWidth: 2)
+                        )
+                    
+                }).buttonStyle(ScaleButtonStyle())
+                
+                
+                Button(action: {
+                    self.color = "orange"
+                }, label: {
+                    Text(self.logic.getIcon(name: "orange"))
+                        .font(.custom("SourceCodePro-Regular", size: 14))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Color.init(hex: "F39C12"))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(self.color == "orange" ? Color.yellow : Color.clear, lineWidth: 2)
+                        )
+                    
+                }).buttonStyle(ScaleButtonStyle())
+                
+                
+            }
         }
     }
 }
