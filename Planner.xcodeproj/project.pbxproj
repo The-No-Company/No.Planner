@@ -35,6 +35,16 @@
 		D44C2C07271790F700281A9D /* taskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C06271790F700281A9D /* taskView.swift */; };
 		D44C2C0B271821BD00281A9D /* gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C0A271821BD00281A9D /* gestures.swift */; };
 		D44C2C0E271825C300281A9D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C0D271825C300281A9D /* SettingsView.swift */; };
+		D44C2C1127185CB400281A9D /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C1027185CB400281A9D /* WidgetView.swift */; };
+		D44C2C2E2718677300281A9D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C2C182718643500281A9D /* WidgetKit.framework */; };
+		D44C2C2F2718677300281A9D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C2C1A2718643500281A9D /* SwiftUI.framework */; };
+		D44C2C322718677300281A9D /* NoPlannerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C312718677300281A9D /* NoPlannerWidget.swift */; };
+		D44C2C352718677400281A9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C2C342718677400281A9D /* Assets.xcassets */; };
+		D44C2C372718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */; };
+		D44C2C382718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */; };
+		D44C2C3B2718677500281A9D /* NoPlannerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D44C2C412718691700281A9D /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C1027185CB400281A9D /* WidgetView.swift */; };
+		D44C2C45271896A600281A9D /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C44271896A600281A9D /* date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +62,28 @@
 			remoteGlobalIDString = D44C2BA827177F0500281A9D;
 			remoteInfo = Planner;
 		};
+		D44C2C392718677400281A9D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44C2BA127177F0500281A9D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D44C2C2C2718677300281A9D;
+			remoteInfo = NoPlannerWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D44C2C3F2718677500281A9D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D44C2C3B2718677500281A9D /* NoPlannerWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D44C2BA927177F0500281A9D /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +112,17 @@
 		D44C2C06271790F700281A9D /* taskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = taskView.swift; sourceTree = "<group>"; };
 		D44C2C0A271821BD00281A9D /* gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gestures.swift; sourceTree = "<group>"; };
 		D44C2C0D271825C300281A9D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D44C2C1027185CB400281A9D /* WidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetView.swift; sourceTree = "<group>"; };
+		D44C2C182718643500281A9D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D44C2C1A2718643500281A9D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D44C2C282718649800281A9D /* Planner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Planner.entitlements; sourceTree = "<group>"; };
+		D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NoPlannerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44C2C312718677300281A9D /* NoPlannerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPlannerWidget.swift; sourceTree = "<group>"; };
+		D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = NoPlannerWidget.intentdefinition; sourceTree = "<group>"; };
+		D44C2C342718677400281A9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D44C2C362718677400281A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D44C2C402718678200281A9D /* NoPlannerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPlannerWidgetExtension.entitlements; sourceTree = "<group>"; };
+		D44C2C44271896A600281A9D /* date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = date.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,15 +153,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D44C2C2A2718677300281A9D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44C2C2F2718677300281A9D /* SwiftUI.framework in Frameworks */,
+				D44C2C2E2718677300281A9D /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		D44C2BA027177F0500281A9D = {
 			isa = PBXGroup;
 			children = (
+				D44C2C402718678200281A9D /* NoPlannerWidgetExtension.entitlements */,
 				D44C2BAB27177F0500281A9D /* Planner */,
 				D44C2BBC27177F0700281A9D /* PlannerTests */,
 				D44C2BC627177F0700281A9D /* PlannerUITests */,
+				D44C2C302718677300281A9D /* NoPlannerWidget */,
+				D44C2C172718643500281A9D /* Frameworks */,
 				D44C2BAA27177F0500281A9D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -130,6 +184,7 @@
 				D44C2BA927177F0500281A9D /* Planner.app */,
 				D44C2BB927177F0700281A9D /* PlannerTests.xctest */,
 				D44C2BC327177F0700281A9D /* PlannerUITests.xctest */,
+				D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +192,7 @@
 		D44C2BAB27177F0500281A9D /* Planner */ = {
 			isa = PBXGroup;
 			children = (
+				D44C2C282718649800281A9D /* Planner.entitlements */,
 				D44C2BEA2717803700281A9D /* Info.plist */,
 				D44C2BDB27177FD700281A9D /* settings.swift */,
 				D44C2BE527177FED00281A9D /* fonts */,
@@ -185,6 +241,7 @@
 				D44C2BDD27177FE400281A9D /* search.swift */,
 				D44C2BDE27177FE400281A9D /* strings.swift */,
 				D44C2C0A271821BD00281A9D /* gestures.swift */,
+				D44C2C44271896A600281A9D /* date.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -192,6 +249,7 @@
 		D44C2BD727177F6600281A9D /* pages */ = {
 			isa = PBXGroup;
 			children = (
+				D44C2C0F27185CA300281A9D /* widget */,
 				D44C2C0C271825B600281A9D /* settings */,
 				D44C2C03271785C500281A9D /* tasks */,
 				D44C2BFE2717810100281A9D /* add */,
@@ -242,6 +300,34 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		D44C2C0F27185CA300281A9D /* widget */ = {
+			isa = PBXGroup;
+			children = (
+				D44C2C1027185CB400281A9D /* WidgetView.swift */,
+			);
+			path = widget;
+			sourceTree = "<group>";
+		};
+		D44C2C172718643500281A9D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D44C2C182718643500281A9D /* WidgetKit.framework */,
+				D44C2C1A2718643500281A9D /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D44C2C302718677300281A9D /* NoPlannerWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D44C2C312718677300281A9D /* NoPlannerWidget.swift */,
+				D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */,
+				D44C2C342718677400281A9D /* Assets.xcassets */,
+				D44C2C362718677400281A9D /* Info.plist */,
+			);
+			path = NoPlannerWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -252,10 +338,12 @@
 				D44C2BA527177F0500281A9D /* Sources */,
 				D44C2BA627177F0500281A9D /* Frameworks */,
 				D44C2BA727177F0500281A9D /* Resources */,
+				D44C2C3F2718677500281A9D /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D44C2C3A2718677400281A9D /* PBXTargetDependency */,
 			);
 			name = Planner;
 			packageProductDependencies = (
@@ -306,6 +394,23 @@
 			productReference = D44C2BC327177F0700281A9D /* PlannerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D44C2C2C2718677300281A9D /* NoPlannerWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D44C2C3C2718677500281A9D /* Build configuration list for PBXNativeTarget "NoPlannerWidgetExtension" */;
+			buildPhases = (
+				D44C2C292718677300281A9D /* Sources */,
+				D44C2C2A2718677300281A9D /* Frameworks */,
+				D44C2C2B2718677300281A9D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NoPlannerWidgetExtension;
+			productName = NoPlannerWidgetExtension;
+			productReference = D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -326,6 +431,9 @@
 					D44C2BC227177F0700281A9D = {
 						CreatedOnToolsVersion = 13.0;
 						TestTargetID = D44C2BA827177F0500281A9D;
+					};
+					D44C2C2C2718677300281A9D = {
+						CreatedOnToolsVersion = 13.0;
 					};
 				};
 			};
@@ -352,6 +460,7 @@
 				D44C2BA827177F0500281A9D /* Planner */,
 				D44C2BB827177F0700281A9D /* PlannerTests */,
 				D44C2BC227177F0700281A9D /* PlannerUITests */,
+				D44C2C2C2718677300281A9D /* NoPlannerWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -383,6 +492,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D44C2C2B2718677300281A9D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44C2C352718677400281A9D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -394,11 +511,14 @@
 				D44C2BAF27177F0500281A9D /* Start.swift in Sources */,
 				D44C2BE327177FE400281A9D /* colors.swift in Sources */,
 				D44C2C02271781AD00281A9D /* logic.swift in Sources */,
+				D44C2C45271896A600281A9D /* date.swift in Sources */,
+				D44C2C382718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */,
 				D44C2C0B271821BD00281A9D /* gestures.swift in Sources */,
 				D44C2BE227177FE400281A9D /* strings.swift in Sources */,
 				D44C2BEC2717806700281A9D /* db.swift in Sources */,
 				D44C2C0E271825C300281A9D /* SettingsView.swift in Sources */,
 				D44C2BE127177FE400281A9D /* search.swift in Sources */,
+				D44C2C1127185CB400281A9D /* WidgetView.swift in Sources */,
 				D44C2BDC27177FD700281A9D /* settings.swift in Sources */,
 				D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */,
 				D44C2BE427177FE400281A9D /* buttons.swift in Sources */,
@@ -424,6 +544,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D44C2C292718677300281A9D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D44C2C412718691700281A9D /* WidgetView.swift in Sources */,
+				D44C2C372718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */,
+				D44C2C322718677300281A9D /* NoPlannerWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -436,6 +566,11 @@
 			isa = PBXTargetDependency;
 			target = D44C2BA827177F0500281A9D /* Planner */;
 			targetProxy = D44C2BC427177F0700281A9D /* PBXContainerItemProxy */;
+		};
+		D44C2C3A2718677400281A9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D44C2C2C2718677300281A9D /* NoPlannerWidgetExtension */;
+			targetProxy = D44C2C392718677400281A9D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -559,12 +694,14 @@
 		D44C2BCE27177F0700281A9D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Planner/Planner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Planner/Preview Content\"";
-				DEVELOPMENT_TEAM = 85573LNX28;
+				DEVELOPMENT_TEAM = GAH72SPMY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Planner/Info.plist;
@@ -581,7 +718,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.Planner;
+				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -592,12 +729,14 @@
 		D44C2BCF27177F0700281A9D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Planner/Planner.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Planner/Preview Content\"";
-				DEVELOPMENT_TEAM = 85573LNX28;
+				DEVELOPMENT_TEAM = GAH72SPMY9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Planner/Info.plist;
@@ -614,7 +753,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.Planner;
+				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -718,6 +857,62 @@
 			};
 			name = Release;
 		};
+		D44C2C3D2718677500281A9D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NoPlannerWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GAH72SPMY9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NoPlannerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NoPlannerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.NoPlannerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D44C2C3E2718677500281A9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = NoPlannerWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GAH72SPMY9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NoPlannerWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NoPlannerWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.NoPlannerWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -753,6 +948,15 @@
 			buildConfigurations = (
 				D44C2BD427177F0700281A9D /* Debug */,
 				D44C2BD527177F0700281A9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D44C2C3C2718677500281A9D /* Build configuration list for PBXNativeTarget "NoPlannerWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D44C2C3D2718677500281A9D /* Debug */,
+				D44C2C3E2718677500281A9D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

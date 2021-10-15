@@ -70,7 +70,7 @@ struct HomeView: View {
                             }
                             VStack(spacing: 10){
                                 ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
-                                    TaskView(id: task.id, text: task.text, time: task.display_date, tags_array: task.tags)
+                                    TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
                                 }
                             }
                         }

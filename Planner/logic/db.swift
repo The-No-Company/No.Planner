@@ -83,6 +83,8 @@ class RealmDB: ObservableObject, Identifiable {
                 
             }
             
+            self.logic.objectWillChange.send()
+            self.logic.planner.objectWillChange.send()
             self.logic.planner.tasks = tmp_tasks
             self.logic.planner.groupTasks()
             

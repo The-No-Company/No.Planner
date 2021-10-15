@@ -10,7 +10,7 @@ import SwiftUI
 struct Start: View {
     @ObservedObject var logic: Logic = LogicAPI
     
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+//    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State private var showing_add = false
 
     var body: some View {
@@ -35,16 +35,18 @@ struct Start: View {
             
         }
         .preferredColorScheme(.dark)
-        .onReceive(timer) { input in
-            self.logic.objectWillChange.send()
-            self.logic.getDate()
-        }
+//        .onReceive(timer) { input in
+//            self.logic.objectWillChange.send()
+//            self.logic.getDate()
+//        }
         .sheet(isPresented: self.$showing_add) {
             AddView()
         }
         .onAppear{
             self.logic.getDate()
             self.logic.planner.getTasks()
+            self.logic.initTimer()
+            
         }
     }
 }

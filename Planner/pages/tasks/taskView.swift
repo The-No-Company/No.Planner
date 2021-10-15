@@ -15,7 +15,10 @@ struct TaskView: View {
     @State var text : String = ""
     @State var time : String = ""
     
+    @State var date : Date = Date()
+    
     @State var tags_array : [String] = []
+    
     
     
     var body: some View {
@@ -26,7 +29,7 @@ struct TaskView: View {
                 .frame(height: self.tags_array.count > 0 ? 5 : 0)
                 .padding(.top, -10)
                 .padding(.horizontal, -15)
-
+            
             Text(self.text)
                 .font(.custom("SourceCodePro-Regular", size: 16))
             
@@ -56,8 +59,28 @@ struct TaskView: View {
                 Label("Delete", systemImage: "xmark")
             }
         }
+       
         .onAppear{
-            print(self.tags_array.count)
+            
+            let exampleDate = self.date
+            
+            let formatter = RelativeDateTimeFormatter()
+            formatter.unitsStyle = .abbreviated
+            let relativeDate = formatter.localizedString(for: exampleDate, relativeTo: Date())
+            
+            let formatter2 = DateFormatter()
+            formatter2.locale =  Locale(identifier: "ru_RU")
+            formatter2.dateFormat = "dd.MM.yyyy"
+            let result = formatter2.string(from: self.date)
+            
+            print(result)
+            print("logic - " + self.logic.date_string)
+            
+            
+//            if (self.logic.date_string == result){
+//                self.time = relativeDate
+//            }
+            
         }
     }
 }

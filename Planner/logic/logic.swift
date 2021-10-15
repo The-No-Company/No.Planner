@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import WidgetKit
 
 var LogicAPI: Logic = Logic()
 
@@ -20,6 +21,20 @@ class Logic: ObservableObject, Identifiable {
     
     @Published var types: [String: String] = ["none": "", "red": "Important", "blue": "Home", "green": "Rest", "orange": "Work", "": ""]
     
+    var timer : Timer?
+    
+    func initTimer(){
+        if timer == nil {
+          let timer = Timer(timeInterval: 1.0,
+                            target: self,
+                            selector: #selector(getDate),
+                            userInfo: nil,
+                            repeats: true)
+          RunLoop.current.add(timer, forMode: .common)
+          
+          self.timer = timer
+        }
+    }
     
     public func getDateToString(format: String = "dd.MM.yyyy", date: Date) -> String{
         
@@ -36,21 +51,21 @@ class Logic: ObservableObject, Identifiable {
         
     }
     
-    public func getDate(format: String = "dd.MM.yyyy"){
-        DispatchQueue.global(qos: .userInitiated).async {
-            let date = Date()
-            let formatter = DateFormatter()
-            
-            formatter.dateFormat = format
-            let result = formatter.string(from: date)
-            
-            DispatchQueue.main.async {
-                self.date = date
-                self.date_string = result
-            }
-            
-            self.getTime()
-        }
+    @objc public func getDate(){
+        let format : String = "dd.MM.yyyy"
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = format
+        let result = formatter.string(from: date)
+        
+        
+        self.date = date
+        self.date_string = result
+        
+        
+        self.getTime()
+        
     }
     
     
@@ -100,6 +115,10 @@ class Planner: ObservableObject, Identifiable {
     @Published var tasks : [Tasks] = []
     @Published var grouped: [Date : [Planner.Tasks]] = [:]
     
+    public func generateWidget(){
+        
+    }
+    
     public func getTasks(){
         RealmAPI.getTasks()
         self.groupTasks()
@@ -113,6 +132,47 @@ class Planner: ObservableObject, Identifiable {
     
     public func groupTasks(){
         self.grouped = self.tasks.groupedBy(dateComponents: [.year, .month, .day])
+        
+        var nodes : [[Int]] = []
+        for i in 0...16{
+            var node_column : [Int] = []
+            for k in 0...6{
+                let date_past = Calendar.current.date(byAdding: .day, value: (-1*(7-k)-(i*7))+1, to: Date().noon)!
+                
+                let formatter = DateFormatter()
+                formatter.locale =  Locale(identifier: "ru_RU")
+                formatter.dateFormat = "dd.MM.yyyy"
+                let result = formatter.string(from: date_past)
+                
+                var found : Int = 0
+                for key in self.grouped.keys {
+                    let result_group = formatter.string(from: key)
+                    if (result_group == result){
+                        found = self.grouped[key]!.count
+                    }
+                }
+                
+                if (found != 0){
+                    
+                    node_column.append(found)
+                }else{
+                    
+                    node_column.append(0)
+                }
+                
+            }
+            nodes.append(node_column)
+        }
+        print("block end")
+        let nodes_reverse = nodes.reduce([],{ [$1] + $0 })
+        print(nodes_reverse)
+        
+        let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
+        defaults!.set(nodes_reverse, forKey: "nodes")
+
+        WidgetCenter.shared.reloadAllTimelines()
+        
+        
     }
     
     public func addtask(text: String, date: Date, tags: [String]){
@@ -127,6 +187,7 @@ class Planner: ObservableObject, Identifiable {
         
         
         RealmAPI.addTasks(id: result_id, text: text, date: date, tags: tags)
+        
         
         
     }
