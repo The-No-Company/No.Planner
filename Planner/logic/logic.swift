@@ -19,7 +19,7 @@ class Logic: ObservableObject, Identifiable {
     
     @Published var planner : Planner = Planner()
     
-    @Published var types: [String: String] = ["none": "", "red": "Important", "blue": "Home", "green": "Rest", "orange": "Work", "": ""]
+    @Published var types: [String: String] = ["none": "", "red": "Important", "blue": "Home", "green": "Rest", "orange": "Work", "purple": "Education", "": ""]
     
     var timer : Timer?
     
@@ -95,6 +95,8 @@ class Logic: ObservableObject, Identifiable {
             color = Color.init(hex: "3498DB")
         case "orange":
             color = Color.init(hex: "F39C12")
+        case "purple":
+            color = Color.init(hex: "9B59B6")
         default:
             color = Color.init(hex: "2F2F2F")
         }
@@ -106,6 +108,12 @@ class Logic: ObservableObject, Identifiable {
     public func getIcon(name: String) -> String{
         return self.types[name] ?? ""
         
+    }
+    public func getIconsDegaults(){
+        let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
+        let savedArray = defaults!.object(forKey: "types") as? [String : String] ?? self.types
+        
+        self.types = savedArray
     }
     
 }
@@ -163,9 +171,9 @@ class Planner: ObservableObject, Identifiable {
             }
             nodes.append(node_column)
         }
-        print("block end")
+        
         let nodes_reverse = nodes.reduce([],{ [$1] + $0 })
-        print(nodes_reverse)
+        
         
         let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
         defaults!.set(nodes_reverse, forKey: "nodes")

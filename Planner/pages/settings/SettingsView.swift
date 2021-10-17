@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import WidgetKit
 
 struct SettingsView: View {
     
@@ -16,6 +17,7 @@ struct SettingsView: View {
     @State var blue : String = ""
     @State var orange : String = ""
     @State var red : String = ""
+    @State var purple : String = ""
     
     var body: some View {
         VStack{
@@ -75,7 +77,7 @@ struct SettingsView: View {
                             Spacer()
                             
                             SearchBarView(text: self.$green, title: self.logic.getIcon(name: "green"), image: "tag", type: .webSearch)
-                                
+                            
                         }
                         
                         HStack(spacing: 5){
@@ -94,7 +96,7 @@ struct SettingsView: View {
                             Spacer()
                             
                             SearchBarView(text: self.$blue, title: self.logic.getIcon(name: "blue"), image: "tag", type: .webSearch)
-                                
+                            
                         }
                         
                         HStack(spacing: 5){
@@ -113,7 +115,7 @@ struct SettingsView: View {
                             Spacer()
                             
                             SearchBarView(text: self.$red, title: self.logic.getIcon(name: "red"), image: "tag", type: .webSearch)
-                                
+                            
                         }
                         
                         HStack(spacing: 5){
@@ -132,8 +134,28 @@ struct SettingsView: View {
                             Spacer()
                             
                             SearchBarView(text: self.$orange, title: self.logic.getIcon(name: "orange"), image: "tag", type: .webSearch)
-                                
+                            
                         }
+                        
+                        HStack(spacing: 5){
+                            
+                            Button(action: {
+                                
+                            }, label: {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.init(hex: "9B59B6"))
+                                }
+                                .frame(width: 30, height: 30)
+                            }).buttonStyle(ScaleButtonStyle())
+                            
+                            
+                            Spacer()
+                            
+                            SearchBarView(text: self.$purple, title: self.logic.getIcon(name: "purple"), image: "tag", type: .webSearch)
+                            
+                        }
+                        
                     }.padding(.horizontal, 20)
                     
                     Spacer()
@@ -141,6 +163,40 @@ struct SettingsView: View {
                     
                 }
             }
+            
+            Button(action: {
+                
+                self.logic.types["red"] = self.red
+                self.logic.types["blue"] = self.blue
+                self.logic.types["green"] = self.green
+                self.logic.types["orange"] = self.orange
+                self.logic.types["purple"] = self.purple
+                
+                let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
+                defaults!.set(self.logic.types, forKey: "types")
+                
+                
+                WidgetCenter.shared.reloadAllTimelines()
+                
+                
+                
+            }, label: {
+                Text("save settings")
+                    .padding(.horizontal, 35)
+                    .padding(.vertical, 5)
+                    .background(Color.white)
+                    .cornerRadius(8.0)
+                    .foregroundColor(Color.black)
+                    .font(Font.custom("Spectral-Medium", size: 16))
+            }).buttonStyle(ScaleButtonStyle())
+                .padding(.bottom)
+            
+        }.onAppear{
+            self.red = self.logic.getIcon(name: "red")
+            self.green = self.logic.getIcon(name: "green")
+            self.blue = self.logic.getIcon(name: "blue")
+            self.orange = self.logic.getIcon(name: "orange")
+            self.purple = self.logic.getIcon(name: "purple")
         }
     }
 }

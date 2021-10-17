@@ -36,7 +36,7 @@ struct TaskView: View {
             HStack{
                 if (self.tags_array.count > 0){
                     if (self.tags_array[0] != "none" && self.tags_array[0] != ""){
-                        Text("[" + self.logic.getIcon(name: self.tags_array.count > 0 ? self.tags_array[0] : "none") + "]")
+                        Text(self.logic.getIcon(name: self.tags_array.count > 0 ? self.tags_array[0] : "none"))
                             .foregroundColor(Color.white.opacity(0.7))
                             .font(.custom("SourceCodePro-Regular", size: 14))
                     }
@@ -73,8 +73,7 @@ struct TaskView: View {
             formatter2.dateFormat = "dd.MM.yyyy"
             let result = formatter2.string(from: self.date)
             
-            print(result)
-            print("logic - " + self.logic.date_string)
+        
             
             
 //            if (self.logic.date_string == result){

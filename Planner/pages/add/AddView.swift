@@ -196,6 +196,23 @@ struct ColorView: View {
                     
                 }).buttonStyle(ScaleButtonStyle())
                 
+                Button(action: {
+                    self.color = "purple"
+                }, label: {
+                    Text(self.logic.getIcon(name: "purple"))
+                        .font(.custom("SourceCodePro-Regular", size: 14))
+                        .padding(.horizontal, 10)
+                        .padding(.vertical, 5)
+                        .background(Color.init(hex: "9B59B6"))
+                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(self.color == "purple" ? Color.yellow : Color.clear, lineWidth: 2)
+                        )
+                    
+                }).buttonStyle(ScaleButtonStyle())
+                
                 
             }
         }

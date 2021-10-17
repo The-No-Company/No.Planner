@@ -20,6 +20,7 @@ struct SearchBarView: View {
         HStack {
             TextField(self.title, text: $text)
                 .keyboardType(self.type)
+                .disableAutocorrection(true)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)
                 .font(.custom("SourceCodePro-Regular", size: 16))

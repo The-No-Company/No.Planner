@@ -25,12 +25,12 @@ struct Start: View {
                         .fill(Color.white)
                     
                     Image(systemName: "plus")
-                        .font(.system(size: 20, weight: .medium, design: .rounded))
+                        .font(.system(size: 30, weight: .medium, design: .rounded))
                         .foregroundColor(.black)
-                }.frame(width: 35, height: 35, alignment: .center)
+                }.frame(width: 45, height: 45, alignment: .center)
+                    .padding(.trailing)
             })
                 .buttonStyle(ScaleButtonStyle())
-                .padding()
             
             
         }
@@ -46,6 +46,7 @@ struct Start: View {
             self.logic.getDate()
             self.logic.planner.getTasks()
             self.logic.initTimer()
+            self.logic.getIconsDegaults()
             
         }
     }

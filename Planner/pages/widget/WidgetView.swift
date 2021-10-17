@@ -49,12 +49,10 @@ struct WidgetView: View {
             
             let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
             let savedArray = defaults!.object(forKey: "nodes") as? [[Int]] ?? []
-            print(savedArray)
             
-            
-            if (savedArray.count == 0){§                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-                print("no count")
-                for i in 0...16{
+            if (savedArray.count == 0){
+                
+                for _ in 0...16{
                     var node_column : [Int] = []
                     for k in 0...6{
                         node_column.append(k)
@@ -68,16 +66,13 @@ struct WidgetView: View {
                 for i in savedArray{
                     for m in i{
                         if (m >= self.maxValue){
-                            print("hello")
-                            print("\(Float(m)) devide by \(20.0)")
                             let ready = Float( Float(m) / 20.0 )
-                            print(ready)
                             self.maxValue = m
                         }
                     }
                 }
                 
-                print("maxValue", self.maxValue)
+                
             }
         }.preferredColorScheme(.dark)
     }
