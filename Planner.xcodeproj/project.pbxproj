@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D440C787271D754C00DB3463 /* YandexMobileMetricaPush in Frameworks */ = {isa = PBXBuildFile; productRef = D440C786271D754C00DB3463 /* YandexMobileMetricaPush */; };
 		D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAC27177F0500281A9D /* PlannerApp.swift */; };
 		D44C2BAF27177F0500281A9D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAE27177F0500281A9D /* Start.swift */; };
 		D44C2BB127177F0700281A9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C2BB027177F0700281A9D /* Assets.xcassets */; };
@@ -131,6 +132,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C2BF7271780A800281A9D /* RealmSwift in Frameworks */,
+				D440C787271D754C00DB3463 /* YandexMobileMetricaPush in Frameworks */,
 				D44C2BF5271780A800281A9D /* Realm in Frameworks */,
 				D44C2BEF2717807D00281A9D /* Alamofire in Frameworks */,
 				D44C2BFD271780D200281A9D /* YandexMobileMetrica in Frameworks */,
@@ -353,6 +355,7 @@
 				D44C2BF6271780A800281A9D /* RealmSwift */,
 				D44C2BF9271780BD00281A9D /* SwiftyJSON */,
 				D44C2BFC271780D200281A9D /* YandexMobileMetrica */,
+				D440C786271D754C00DB3463 /* YandexMobileMetricaPush */,
 			);
 			productName = Planner;
 			productReference = D44C2BA927177F0500281A9D /* Planner.app */;
@@ -452,6 +455,7 @@
 				D44C2BF3271780A800281A9D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				D44C2BF8271780BD00281A9D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				D44C2BFB271780D200281A9D /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
+				D440C785271D754C00DB3463 /* XCRemoteSwiftPackageReference "metrica-push-sdk-ios" */,
 			);
 			productRefGroup = D44C2BAA27177F0500281A9D /* Products */;
 			projectDirPath = "";
@@ -964,6 +968,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D440C785271D754C00DB3463 /* XCRemoteSwiftPackageReference "metrica-push-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yandexmobile/metrica-push-sdk-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		D44C2BED2717807D00281A9D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -1007,6 +1019,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D440C786271D754C00DB3463 /* YandexMobileMetricaPush */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D440C785271D754C00DB3463 /* XCRemoteSwiftPackageReference "metrica-push-sdk-ios" */;
+			productName = YandexMobileMetricaPush;
+		};
 		D44C2BEE2717807D00281A9D /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D44C2BED2717807D00281A9D /* XCRemoteSwiftPackageReference "Alamofire" */;

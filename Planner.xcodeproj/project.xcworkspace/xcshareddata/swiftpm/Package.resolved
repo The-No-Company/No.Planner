@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "YandexMobileMetricaPush",
+        "repositoryURL": "https://github.com/yandexmobile/metrica-push-sdk-ios",
+        "state": {
+          "branch": null,
+          "revision": "1545b6f3ff2a6c0a5c63cdece4e12d4390d126d2",
+          "version": "1.1.1"
+        }
+      },
+      {
         "package": "YandexMobileMetrica",
         "repositoryURL": "https://github.com/yandexmobile/metrica-sdk-ios",
         "state": {
