@@ -11,12 +11,14 @@ struct Start: View {
     @ObservedObject var logic: Logic = LogicAPI
 
     @State private var showing_add = false
+    @State var open_type : Int = 0
 
     var body: some View {
         ZStack(alignment: .bottomTrailing){
             HomeView()
             
             Button(action: {
+                self.open_type = 0
                 self.showing_add.toggle()
             }, label: {
                 ZStack{
@@ -35,7 +37,13 @@ struct Start: View {
         }
         .preferredColorScheme(.dark)
         .sheet(isPresented: self.$showing_add) {
-            AddView()
+            if (self.open_type == 0){
+                AddView()
+            }
+            
+            if (self.open_type == 1){
+                WelcomeView(close: self.$showing_add)
+            }
         }
         .onAppear{
             self.logic.getDate()
@@ -43,6 +51,14 @@ struct Start: View {
             self.logic.initTimer()
             self.logic.getIconsDegaults()
             
+            let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
+            
+            let welcome = defaults!.object(forKey: "welcome") as? Bool ?? false
+            if (welcome == false){
+                defaults!.set(true, forKey: "welcome")
+                self.open_type = 1
+                self.showing_add.toggle()
+            }
         }
     }
 }

@@ -46,6 +46,8 @@
 		D44C2C3B2718677500281A9D /* NoPlannerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D44C2C412718691700281A9D /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C1027185CB400281A9D /* WidgetView.swift */; };
 		D44C2C45271896A600281A9D /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C44271896A600281A9D /* date.swift */; };
+		D488773E27209C8300557AFA /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D488773D27209C8300557AFA /* WelcomeView.swift */; };
+		D488773F2720BEB600557AFA /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BDF27177FE400281A9D /* colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,6 +126,7 @@
 		D44C2C362718677400281A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D44C2C402718678200281A9D /* NoPlannerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPlannerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D44C2C44271896A600281A9D /* date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = date.swift; sourceTree = "<group>"; };
+		D488773D27209C8300557AFA /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -251,6 +254,7 @@
 		D44C2BD727177F6600281A9D /* pages */ = {
 			isa = PBXGroup;
 			children = (
+				D488773C27209C7400557AFA /* welcome */,
 				D44C2C0F27185CA300281A9D /* widget */,
 				D44C2C0C271825B600281A9D /* settings */,
 				D44C2C03271785C500281A9D /* tasks */,
@@ -328,6 +332,14 @@
 				D44C2C362718677400281A9D /* Info.plist */,
 			);
 			path = NoPlannerWidget;
+			sourceTree = "<group>";
+		};
+		D488773C27209C7400557AFA /* welcome */ = {
+			isa = PBXGroup;
+			children = (
+				D488773D27209C8300557AFA /* WelcomeView.swift */,
+			);
+			path = welcome;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -524,6 +536,7 @@
 				D44C2BE127177FE400281A9D /* search.swift in Sources */,
 				D44C2C1127185CB400281A9D /* WidgetView.swift in Sources */,
 				D44C2BDC27177FD700281A9D /* settings.swift in Sources */,
+				D488773E27209C8300557AFA /* WelcomeView.swift in Sources */,
 				D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */,
 				D44C2BE427177FE400281A9D /* buttons.swift in Sources */,
 				D44C2C002717810100281A9D /* AddView.swift in Sources */,
@@ -553,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C2C412718691700281A9D /* WidgetView.swift in Sources */,
+				D488773F2720BEB600557AFA /* colors.swift in Sources */,
 				D44C2C372718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */,
 				D44C2C322718677300281A9D /* NoPlannerWidget.swift in Sources */,
 			);

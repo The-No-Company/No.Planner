@@ -78,7 +78,7 @@ struct AddView: View {
                         .cornerRadius(8)
                         .frame(height: 500)
                         .disableAutocorrection(true)
-                        .tag(2)
+                        .accentColor(.white)
                         .introspectTextView { field in
                             if (self.openView == false){
                                 field.becomeFirstResponder()

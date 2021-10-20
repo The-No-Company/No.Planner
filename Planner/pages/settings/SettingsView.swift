@@ -19,6 +19,8 @@ struct SettingsView: View {
     @State var red : String = ""
     @State var purple : String = ""
     
+    @Binding var close : Bool
+    
     var body: some View {
         VStack{
             ScrollView(.vertical, showsIndicators: false){
@@ -178,6 +180,7 @@ struct SettingsView: View {
                 
                 WidgetCenter.shared.reloadAllTimelines()
                 
+                self.close.toggle()
                 
                 
             }, label: {

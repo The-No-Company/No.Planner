@@ -34,8 +34,9 @@ struct WidgetView: View {
                         VStack(spacing: 5){
                             ForEach(column, id:\.self){ item in
                                 RoundedRectangle(cornerRadius: 2)
-                                    .fill(item > 0 && self.found_defaults == true ? Color.white.opacity(getColor(integer: item)) : Color.secondary.opacity(0.8))
+                                    .fill(item > 0 && self.found_defaults == true ? Color.init(hex: "ffffff").opacity(getColor(integer: item)) : Color.init(hex: "626567").opacity(0.2))
                                     .frame(width: 14, height: 14, alignment: .center)
+                                    
                             }
                         }
                     }
