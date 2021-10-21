@@ -25,46 +25,13 @@ struct HomeView: View {
         }
     }
     
-    func CreateTopArea(position: CGFloat, date: Date) -> CGFloat{
-        
-        if (position > 0){
-            if (self.logic.getDateToString(date: date) == ""){
-                DispatchQueue.main.async {
-                    self.header = self.logic.date_string
-                }
-            }else{
-                let keys_ready = self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow})
-                if (self.logic.getDateToString(date: date) == self.logic.getDateToString(date: keys_ready.first!)){
-                 
-                    DispatchQueue.main.async {
-                        self.header = self.logic.date_string
-                    }
-                }
-            }
-           
-            if (position < 60){
-                DispatchQueue.main.async {
-                    self.header = self.logic.getDateToString(date: date)
-                }
-                
-                if (self.logic.getDateToString(date: date) == ""){
-                    DispatchQueue.main.async {
-                        self.header = self.logic.date_string
-                    }
-                }
-            }
-        }
-        
-    
-        
-        return 40
-    }
+  
     
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0){
                 HStack{
-                    Text("\(self.header)")
+                    Text("Good day!")
                         .font(Font.custom("Spectral-Medium", size: 26))
                     Spacer()
                     
@@ -102,38 +69,12 @@ struct HomeView: View {
                 }else{
                     ScrollView(.vertical, showsIndicators: false){
                         
-//                        if (self.logic.planner.grouped.keys[Date()] == nil){
-//                            HStack{
-//                                Spacer()
-//                                
-//                                Text("Add finished task")
-//                                    .font(.custom("SourceCodePro-Regular", size: 16))
-//                                    .foregroundColor(Color.secondary.opacity(0.7))
-//                                
-//                                Spacer()
-//                            }
-//                        }
-                        
-                        
                         ForEach(self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow}), id: \.self) { key in
                             
-                            VStack(spacing: 5){
-                                
-                                HStack{
-                                    GeometryReader { header_geo in
-                                        Text(self.logic.getDateToString(date: key))
-                                            .frame(height: self.CreateTopArea(position: header_geo.frame(in: .global).minY, date: key))
-                                            .font(Font.custom("Spectral-Medium", size: 26))
-                                        Spacer()
-                                    }
-                                }.frame(height: self.logic.getDateToString(date: key) != "" ? 40 : 1)
-                                
-                                VStack(spacing: 10){
-                                    ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
-                                        TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
-                                    }
-                                }
-                            }
+                            
+                            TaskBox(key: key)
+                           
+                            
                             
                             
                         }
@@ -171,6 +112,69 @@ struct ProgressBarView: View {
                     .foregroundColor(self.color)
                     .animation(.linear)
             }.cornerRadius(45.0)
+        }
+    }
+}
+
+struct TaskBox: View {
+    
+    @State var topOffset : CGFloat = 0
+    @State var bottomOffset : CGFloat = 0
+    @ObservedObject var logic: Logic = LogicAPI
+    @State var key : Date
+    
+    func getOpacity() -> CGFloat{
+        if (self.bottomOffset < 40){
+            let progress = bottomOffset / 40
+            return progress
+        }
+        return 1
+    }
+    
+    var body: some View {
+        VStack(spacing: 5){
+            
+            VStack(spacing: 10){
+                
+                HStack{
+                    
+                    Text(self.logic.getDateToString(date: key))
+                        .frame(height: 40)
+                        .font(Font.custom("Spectral-Medium", size: 26))
+                        .opacity(self.getOpacity())
+                    Spacer()
+                    
+                }
+                .background(Color.black)
+                .offset(y: self.topOffset >= 100 ? 0 : -topOffset + 100)
+                .frame(height: 40)
+                .zIndex(1)
+              
+               
+                
+                
+                
+                ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
+                    TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
+                }
+            }
+            .zIndex(0)
+            .clipped()
+            .background(
+                GeometryReader{ proxy -> Color in
+                    
+                    let minY = proxy.frame(in: .global).minY
+                    let maxY = proxy.frame(in: .global).maxY
+                    
+                    DispatchQueue.main.async{
+                        self.topOffset = minY
+                        self.bottomOffset = maxY - 100
+                    }
+                    
+                    return Color.clear
+                }
+            )
+//            end all tasks in this day
         }
     }
 }

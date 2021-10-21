@@ -41,11 +41,12 @@ class Logic: ObservableObject, Identifiable {
         let formatter = DateFormatter()
         
         formatter.dateFormat = format
+        
         let result = formatter.string(from: date)
         
-        if (self.date_string == result){
-            return ""
-        }
+//        if (self.date_string == result){
+//            return ""
+//        }
         
         return result
         
