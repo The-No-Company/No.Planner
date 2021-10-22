@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C702DC52721B5FB0021E688 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C702DC42721B5FB0021E688 /* Alamofire */; };
 		D440C787271D754C00DB3463 /* YandexMobileMetricaPush in Frameworks */ = {isa = PBXBuildFile; productRef = D440C786271D754C00DB3463 /* YandexMobileMetricaPush */; };
 		D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAC27177F0500281A9D /* PlannerApp.swift */; };
 		D44C2BAF27177F0500281A9D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAE27177F0500281A9D /* Start.swift */; };
@@ -24,7 +25,6 @@
 		D44C2BE827177FED00281A9D /* SpectralMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D44C2BE627177FED00281A9D /* SpectralMedium.ttf */; };
 		D44C2BE927177FED00281A9D /* SourceCodeRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D44C2BE727177FED00281A9D /* SourceCodeRegular.ttf */; };
 		D44C2BEC2717806700281A9D /* db.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BEB2717806700281A9D /* db.swift */; };
-		D44C2BEF2717807D00281A9D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = D44C2BEE2717807D00281A9D /* Alamofire */; };
 		D44C2BF22717808900281A9D /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = D44C2BF12717808900281A9D /* Introspect */; };
 		D44C2BF5271780A800281A9D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D44C2BF4271780A800281A9D /* Realm */; };
 		D44C2BF7271780A800281A9D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D44C2BF6271780A800281A9D /* RealmSwift */; };
@@ -135,9 +135,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C2BF7271780A800281A9D /* RealmSwift in Frameworks */,
+				2C702DC52721B5FB0021E688 /* Alamofire in Frameworks */,
 				D440C787271D754C00DB3463 /* YandexMobileMetricaPush in Frameworks */,
 				D44C2BF5271780A800281A9D /* Realm in Frameworks */,
-				D44C2BEF2717807D00281A9D /* Alamofire in Frameworks */,
 				D44C2BFD271780D200281A9D /* YandexMobileMetrica in Frameworks */,
 				D44C2BFA271780BD00281A9D /* SwiftyJSON in Frameworks */,
 				D44C2BF22717808900281A9D /* Introspect in Frameworks */,
@@ -361,13 +361,13 @@
 			);
 			name = Planner;
 			packageProductDependencies = (
-				D44C2BEE2717807D00281A9D /* Alamofire */,
 				D44C2BF12717808900281A9D /* Introspect */,
 				D44C2BF4271780A800281A9D /* Realm */,
 				D44C2BF6271780A800281A9D /* RealmSwift */,
 				D44C2BF9271780BD00281A9D /* SwiftyJSON */,
 				D44C2BFC271780D200281A9D /* YandexMobileMetrica */,
 				D440C786271D754C00DB3463 /* YandexMobileMetricaPush */,
+				2C702DC42721B5FB0021E688 /* Alamofire */,
 			);
 			productName = Planner;
 			productReference = D44C2BA927177F0500281A9D /* Planner.app */;
@@ -462,12 +462,12 @@
 			);
 			mainGroup = D44C2BA027177F0500281A9D;
 			packageReferences = (
-				D44C2BED2717807D00281A9D /* XCRemoteSwiftPackageReference "Alamofire" */,
 				D44C2BF02717808900281A9D /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D44C2BF3271780A800281A9D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 				D44C2BF8271780BD00281A9D /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				D44C2BFB271780D200281A9D /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
 				D440C785271D754C00DB3463 /* XCRemoteSwiftPackageReference "metrica-push-sdk-ios" */,
+				2C702DC32721B5FB0021E688 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = D44C2BAA27177F0500281A9D /* Products */;
 			projectDirPath = "";
@@ -723,6 +723,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Planner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = No.Planner;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -758,6 +759,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Planner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = No.Planner;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -888,6 +890,7 @@
 				INFOPLIST_FILE = NoPlannerWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NoPlannerWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -899,7 +902,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -916,6 +919,7 @@
 				INFOPLIST_FILE = NoPlannerWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NoPlannerWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -927,7 +931,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -982,20 +986,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2C702DC32721B5FB0021E688 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		D440C785271D754C00DB3463 /* XCRemoteSwiftPackageReference "metrica-push-sdk-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yandexmobile/metrica-push-sdk-ios";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.0.0;
-			};
-		};
-		D44C2BED2717807D00281A9D /* XCRemoteSwiftPackageReference "Alamofire" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Alamofire/Alamofire";
-			requirement = {
-				branch = master;
-				kind = branch;
 			};
 		};
 		D44C2BF02717808900281A9D /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
@@ -1033,15 +1037,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2C702DC42721B5FB0021E688 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2C702DC32721B5FB0021E688 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		D440C786271D754C00DB3463 /* YandexMobileMetricaPush */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D440C785271D754C00DB3463 /* XCRemoteSwiftPackageReference "metrica-push-sdk-ios" */;
 			productName = YandexMobileMetricaPush;
-		};
-		D44C2BEE2717807D00281A9D /* Alamofire */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D44C2BED2717807D00281A9D /* XCRemoteSwiftPackageReference "Alamofire" */;
-			productName = Alamofire;
 		};
 		D44C2BF12717808900281A9D /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;

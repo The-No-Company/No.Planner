@@ -20,6 +20,7 @@ struct SettingsView: View {
     @State var purple : String = ""
     
     @Binding var close : Bool
+    @State private var selectedColor = Color.white
     
     var body: some View {
         VStack{
@@ -160,6 +161,42 @@ struct SettingsView: View {
                         
                     }.padding(.horizontal, 20)
                     
+//                    VStack(spacing: 10){
+//                        HStack{
+//                            Text("Widget color")
+//                                .font(Font.custom("Spectral-Medium", size: 20))
+//                            
+//                            Spacer()
+//                        }
+//                        .padding(.horizontal, 20)
+//                        
+//                        RoundedRectangle(cornerRadius: 8)
+//                            .fill(Color.secondary.opacity(0.2))
+//                            .padding(.horizontal, 20)
+//                            .frame(height: 2)
+//                        
+//                    }.padding(.bottom, 10)
+//                    
+//                    VStack(spacing: 10){
+//                        
+//                        HStack{
+//                            ColorPicker(
+//                                "Press circle",
+//                                selection: $selectedColor
+//                            )
+//                            
+//                            Spacer()
+//                            
+//                            RoundedRectangle(cornerRadius: 8)
+//                                .fill(self.selectedColor)
+//                                .frame(height: 25)
+//                            
+//                        }
+//                        
+//                    }.padding(.horizontal, 20)
+//                    
+                    
+                    
                     Spacer()
                     
                     
@@ -176,6 +213,8 @@ struct SettingsView: View {
                 
                 let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
                 defaults!.set(self.logic.types, forKey: "types")
+                
+//                defaults!.set(self.selectedColor, forKey: "color")
                 
                 
                 WidgetCenter.shared.reloadAllTimelines()

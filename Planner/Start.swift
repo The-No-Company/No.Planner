@@ -15,7 +15,13 @@ struct Start: View {
 
     var body: some View {
         ZStack(alignment: .bottomTrailing){
-            HomeView()
+            GeometryReader { proxy in
+                
+                let topEdge = proxy.safeAreaInsets.top
+                
+                HomeView(topEdge: topEdge)
+                    .ignoresSafeArea(.all, edges: .top)
+            }
             
             Button(action: {
                 self.open_type = 0

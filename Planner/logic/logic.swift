@@ -13,6 +13,9 @@ var LogicAPI: Logic = Logic()
 
 class Logic: ObservableObject, Identifiable {
     public var id: Int = 0
+    
+    @Published var minimum : minimumStructure = minimumStructure(date: "~", index: 0)
+    
     @Published var date_string : String = ""
     @Published var time_string : String = ""
     @Published var date : Date = Date()
@@ -44,9 +47,9 @@ class Logic: ObservableObject, Identifiable {
         
         let result = formatter.string(from: date)
         
-//        if (self.date_string == result){
-//            return ""
-//        }
+        if (self.date_string == result){
+            return "Today"
+        }
         
         return result
         

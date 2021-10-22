@@ -11,13 +11,19 @@ struct HomeView: View {
     @State private var showing_add = false
     @ObservedObject var logic: Logic = LogicAPI
     
+   var topEdge: CGFloat
     
     @State var header : String = ""
     
     @SwiftUI.Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     
-    init(){
+    init(topEdge: CGFloat){
+        
+        self.topEdge = topEdge
+        
+//        UIScrollView.appearance().bounces = false
+        
         let apparence = UITabBarAppearance()
         apparence.configureWithOpaqueBackground()
         if #available(iOS 15.0, *) {
@@ -28,11 +34,24 @@ struct HomeView: View {
   
     
     var body: some View {
-        GeometryReader { geometry in
+        
             VStack(spacing: 0){
                 HStack{
-                    Text("Good day!")
-                        .font(Font.custom("Spectral-Medium", size: 26))
+                    VStack(alignment: .leading){
+                        Text("No.Planner")
+                            .font(Font.custom("Spectral-Medium", size: 26))
+                        if (self.logic.planner.grouped.keys.count > 0){
+                            if (self.logic.minimum.date != self.logic.getDateToString(date: self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow})[0])){
+                                Text(self.logic.minimum.date)
+                                    .font(Font.custom("Spectral-Medium", size: 18))
+                                    .foregroundColor(Color.white.opacity(0.7))
+                            }else{
+                                Text("Today")
+                                    .font(Font.custom("Spectral-Medium", size: 18))
+                                    .foregroundColor(Color.white.opacity(0.7))
+                            }
+                        }
+                    }
                     Spacer()
                     
                     Button(action: {
@@ -80,16 +99,18 @@ struct HomeView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top)
+                    .padding(.top, 10)
                     .padding(.horizontal, 10)
                     
                 }
                 
                 
-            }.sheet(isPresented: self.$showing_add) {
+            }
+            .padding(.top, self.topEdge)
+            .sheet(isPresented: self.$showing_add) {
                 SettingsView(close: self.$showing_add)
             }
-        }
+        
         .onAppear{
             self.logic.planner.getTasks()
         }
@@ -116,65 +137,55 @@ struct ProgressBarView: View {
     }
 }
 
+var minimum : minimumStructure = minimumStructure(date: "", index: 0)
+
+struct minimumStructure : Identifiable, Hashable{
+    var id = 0
+    var date : String
+    var index : CGFloat
+}
+
 struct TaskBox: View {
-    
-    @State var topOffset : CGFloat = 0
-    @State var bottomOffset : CGFloat = 0
+
     @ObservedObject var logic: Logic = LogicAPI
     @State var key : Date
-    
-    func getOpacity() -> CGFloat{
-        if (self.bottomOffset < 40){
-            let progress = bottomOffset / 40
-            return progress
-        }
-        return 1
-    }
+
     
     var body: some View {
-        VStack(spacing: 5){
+        ZStack(alignment: .top){
             
             VStack(spacing: 10){
                 
                 HStack{
-                    
-                    Text(self.logic.getDateToString(date: key))
-                        .frame(height: 40)
-                        .font(Font.custom("Spectral-Medium", size: 26))
-                        .opacity(self.getOpacity())
+                    GeometryReader { proxy -> Text in
+                        let y = proxy.frame(in: .global).maxY
+                        if (y < 100 && y > 0){
+                            DispatchQueue.main.async {
+                                self.logic.minimum.index = y
+                                if (self.logic.getDateToString(date: key) == "Today"){
+                                    self.logic.minimum.date = "~"
+                                }else{
+                                    self.logic.minimum.date = self.logic.getDateToString(date: key)
+                                }
+                            }
+                        }
+                        return Text(self.logic.getDateToString(date: key))
+                            .font(Font.custom("Spectral-Medium", size: 26))
+                    }
                     Spacer()
                     
                 }
+                .frame(height: self.logic.getDateToString(date: key).count > 0 ? 40 : 0)
                 .background(Color.black)
-                .offset(y: self.topOffset >= 100 ? 0 : -topOffset + 100)
-                .frame(height: 40)
-                .zIndex(1)
-              
-               
-                
-                
-                
-                ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
-                    TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
+        
+                VStack(spacing: 10){
+                    if (self.logic.planner.grouped[key] != nil){
+                        ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
+                            TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
+                        }
+                    }
                 }
             }
-            .zIndex(0)
-            .clipped()
-            .background(
-                GeometryReader{ proxy -> Color in
-                    
-                    let minY = proxy.frame(in: .global).minY
-                    let maxY = proxy.frame(in: .global).maxY
-                    
-                    DispatchQueue.main.async{
-                        self.topOffset = minY
-                        self.bottomOffset = maxY - 100
-                    }
-                    
-                    return Color.clear
-                }
-            )
-//            end all tasks in this day
         }
     }
 }
