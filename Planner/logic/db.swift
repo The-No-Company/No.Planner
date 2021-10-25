@@ -20,13 +20,13 @@ class RealmDB: ObservableObject, Identifiable {
         let config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 1,
+            schemaVersion: 3,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 1) {
+                if (oldSchemaVersion < 3) {
                     // Nothing to do!
                     // Realm will automatically detect new properties and removed properties
                     // And will update the schema on disk automatically
@@ -50,6 +50,20 @@ class RealmDB: ObservableObject, Identifiable {
         self.getTasks()
     }
     
+    func updateTask(id: Int, text: String, tags: [String] = ["none"]) {
+        let realm = try! Realm()
+        let object = realm.objects(Task.self).filter("id = \(id)")
+        
+        if let task = object.first {
+            try! realm.write {
+                task.tags = tags.first!
+                task.text = text
+            }
+        }
+        self.getTasks()
+    }
+    
+    
     func getTasks() {
         let realm = try! Realm()
         let objects = realm.objects(Task.self)
@@ -66,10 +80,7 @@ class RealmDB: ObservableObject, Identifiable {
             
             for i in 0...objects.count - 1 {
                 
-                var tags : [String] = []
-                for tag in objects[i].tags{
-                    tags.append(tag)
-                }
+            
                 
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
@@ -79,7 +90,7 @@ class RealmDB: ObservableObject, Identifiable {
                                                text: objects[i].text,
                                                date: objects[i].date,
                                                display_date: result,
-                                               tags: tags))
+                                               tags: [objects[i].tags]))
                 
             }
             
@@ -98,7 +109,7 @@ class RealmDB: ObservableObject, Identifiable {
         
     }
     
-    func addTasks(id: Int, text: String, date: Date, tags: [String]){
+    func addTasks(id: Int, text: String, date: Date, tags: [String] = ["none"]){
         let formatter = DateFormatter()
         formatter.dateFormat = "dd.MM.yyyy HH:mm"
         let result = formatter.string(from: date)
@@ -106,9 +117,7 @@ class RealmDB: ObservableObject, Identifiable {
         let task = Task()
         task.id = id
         task.text = text
-        for tag in tags {
-            task.tags.append(tag)
-        }
+        task.tags = tags.first!
         task.date = date
         task.display_date = result
         
@@ -128,7 +137,7 @@ class RealmDB: ObservableObject, Identifiable {
 open class Task: Object {
     @objc dynamic var id = 0
     @objc dynamic var text : String = ""
-    let tags = RealmSwift.List<String>()
+    @objc dynamic var tags :  String = ""
     @objc dynamic var date: Date = Date()
     @objc dynamic var display_date : String = ""
     

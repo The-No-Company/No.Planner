@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct HomeView: View {
     @State private var showing_add = false
     @ObservedObject var logic: Logic = LogicAPI
     
-   var topEdge: CGFloat
+    var topEdge: CGFloat
     
     @State var header : String = ""
     
@@ -22,94 +23,104 @@ struct HomeView: View {
         
         self.topEdge = topEdge
         
-//        UIScrollView.appearance().bounces = false
+        //        UIScrollView.appearance().bounces = false
         
         let apparence = UITabBarAppearance()
         apparence.configureWithOpaqueBackground()
         if #available(iOS 15.0, *) {
             UITabBar.appearance().scrollEdgeAppearance = apparence
         }
+        
+        if #available(iOS 14.0, *) {
+            // iOS 14 doesn't have extra separators below the list by default.
+        } else {
+            // To remove only extra separators below the list:
+            UITableView.appearance().tableFooterView = UIView()
+        }
+        
+        // To remove all separators including the actual ones:
+        UITableView.appearance().separatorStyle = .none
+        UITableView.appearance().showsVerticalScrollIndicator = false
+        
     }
     
-  
+    
     
     var body: some View {
         
-            VStack(spacing: 0){
-                HStack{
-                    VStack(alignment: .leading){
-                        Text("No.Planner")
-                            .font(Font.custom("Spectral-Medium", size: 26))
-                        if (self.logic.planner.grouped.keys.count > 0){
-                            if (self.logic.minimum.date != self.logic.getDateToString(date: self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow})[0])){
-                                Text(self.logic.minimum.date)
-                                    .font(Font.custom("Spectral-Medium", size: 18))
-                                    .foregroundColor(Color.white.opacity(0.7))
-                            }else{
-                                Text("Today")
-                                    .font(Font.custom("Spectral-Medium", size: 18))
-                                    .foregroundColor(Color.white.opacity(0.7))
-                            }
+        VStack(spacing: 0){
+            HStack{
+                VStack(alignment: .leading){
+                    Text("No.Planner")
+                        .font(Font.custom("Spectral-Medium", size: 26))
+                    if (self.logic.planner.grouped.keys.count > 0){
+                        if (self.logic.minimum.date != self.logic.getDateToString(date: self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow})[0])){
+                            Text(self.logic.minimum.date)
+                                .font(Font.custom("Spectral-Medium", size: 18))
+                                .foregroundColor(Color.white.opacity(0.7))
+                        }else{
+                            Text("Today")
+                                .font(Font.custom("Spectral-Medium", size: 18))
+                                .foregroundColor(Color.white.opacity(0.7))
                         }
+                    }
+                }
+                Spacer()
+                
+                Button(action: {
+                    let generator = UIImpactFeedbackGenerator(style: .light)
+                    generator.impactOccurred()
+                    
+                    print("open_settings")
+                    self.showing_add.toggle()
+                }, label: {
+                    Image(systemName: "gear")
+                        .font(.system(size: 20, weight: .medium, design: .rounded))
+                        .foregroundColor(.white)
+                })
+                    .buttonStyle(ScaleButtonStyle())
+                    .padding(.trailing, 10)
+                
+            }
+            .padding(.horizontal, 10)
+            
+            if (self.logic.planner.tasks.count == 0){
+                VStack(spacing: 0){
+                    Spacer()
+                    VStack(spacing: 10){
+                        Text("No.Tasks")
+                            .font(.custom("SourceCodePro-Regular", size: 16))
+                            .foregroundColor(Color.secondary.opacity(0.7))
+                        
+                        Text("\(self.logic.time_string)")
+                            .font(Font.custom("Spectral-Medium", size: 32))
+                    }
+                    
+                    Spacer()
+                }
+            }else{
+                List(){
+                    
+                    ForEach(self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow}), id: \.self) { key in
+                        TaskBox(key: key)
+                            .listRowInsets(EdgeInsets())
                     }
                     Spacer()
-                    
-                    Button(action: {
-                        let generator = UIImpactFeedbackGenerator(style: .light)
-                        generator.impactOccurred()
-                        
-                        print("open_settings")
-                        self.showing_add.toggle()
-                    }, label: {
-                        Image(systemName: "gear")
-                            .font(.system(size: 20, weight: .medium, design: .rounded))
-                            .foregroundColor(.white)
-                    })
-                        .buttonStyle(ScaleButtonStyle())
-                        .padding(.trailing, 10)
-                    
                 }
+                .padding(.top, 10)
                 .padding(.horizontal, 10)
-                
-                if (self.logic.planner.tasks.count == 0){
-                    VStack(spacing: 0){
-                        Spacer()
-                        VStack(spacing: 10){
-                            Text("No.Tasks")
-                                .font(.custom("SourceCodePro-Regular", size: 16))
-                                .foregroundColor(Color.secondary.opacity(0.7))
-                            
-                            Text("\(self.logic.time_string)")
-                                .font(Font.custom("Spectral-Medium", size: 32))
-                        }
-                        
-                        Spacer()
-                    }
-                }else{
-                    ScrollView(.vertical, showsIndicators: false){
-                        
-                        ForEach(self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow}), id: \.self) { key in
-                            
-                            
-                            TaskBox(key: key)
-                           
-                            
-                            
-                            
-                        }
-                        Spacer()
-                    }
-                    .padding(.top, 10)
-                    .padding(.horizontal, 10)
-                    
-                }
+                .listStyle(.plain)
+                .background(Color.black)
                 
                 
             }
-            .padding(.top, self.topEdge)
-            .sheet(isPresented: self.$showing_add) {
-                SettingsView(close: self.$showing_add)
-            }
+            
+            
+        }
+        .padding(.top, self.topEdge)
+        .sheet(isPresented: self.$showing_add) {
+            SettingsView(close: self.$showing_add)
+        }
         
         .onAppear{
             self.logic.planner.getTasks()
@@ -146,15 +157,16 @@ struct minimumStructure : Identifiable, Hashable{
 }
 
 struct TaskBox: View {
-
+    
     @ObservedObject var logic: Logic = LogicAPI
     @State var key : Date
-
+    
+    @State var taskSelected : Planner.Tasks = Planner.Tasks(id: 0, text: "", date: Date(), display_date: "", tags: [])
     
     var body: some View {
         ZStack(alignment: .top){
             
-            VStack(spacing: 10){
+            VStack(spacing: 5){
                 
                 HStack{
                     GeometryReader { proxy -> Text in
@@ -177,8 +189,9 @@ struct TaskBox: View {
                 }
                 .frame(height: self.logic.getDateToString(date: key).count > 0 ? 40 : 0)
                 .background(Color.black)
-        
-                VStack(spacing: 10){
+                .padding(.top, 10)
+                
+                VStack(spacing: 15){
                     if (self.logic.planner.grouped[key] != nil){
                         ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
                             TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
@@ -189,3 +202,5 @@ struct TaskBox: View {
         }
     }
 }
+
+

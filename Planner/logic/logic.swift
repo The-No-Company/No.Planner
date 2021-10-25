@@ -186,6 +186,9 @@ class Planner: ObservableObject, Identifiable {
         
         
     }
+    public func updateTask(id: Int, text: String, tags: [String]){
+        RealmAPI.updateTask(id: id, text: text, tags: tags)
+    }
     
     public func addtask(text: String, date: Date, tags: [String]){
         let formatter = DateFormatter()

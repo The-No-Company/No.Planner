@@ -12,16 +12,15 @@ import Introspect
 struct AddView: View {
     
     @State var tag : String = "none"
-    
+    @State var id : Int = 0
     @State var text : String = ""
+    @State var date : Date = Date()
     @State var openView : Bool = false
     
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var logic: Logic = LogicAPI
     
-    init() {
-        UITextView.appearance().backgroundColor = .clear
-    }
+  
     
     var body: some View {
         
@@ -34,22 +33,46 @@ struct AddView: View {
             
             
             HStack{
-                Text("Add")
+                Text(self.id != 0 ? "Edit / Remove " : "Add")
                     .font(Font.custom("Spectral-Medium", size: 26))
                 Spacer()
+                
+                
+                if (self.id != 0){
+                    Button(action: {
+                        DispatchQueue.main.async {
+                            self.logic.planner.removeTask(id: self.id)
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "xmark.circle")
+                            .font(.system(size: 18, weight: .medium, design: .rounded))
+                            .foregroundColor(.red)
+                            .opacity(0.5)
+                    }).buttonStyle(ScaleButtonStyle())
+                }
                 
                 Button(action: {
                     let generator = UIImpactFeedbackGenerator(style: .light)
                     generator.impactOccurred()
-                    
-                    self.logic.planner.addtask(text: self.text, date: Date(), tags: [self.tag])
-                    self.presentationMode.wrappedValue.dismiss()
+                    if (self.id != 0){
+                        DispatchQueue.main.async {
+                            self.logic.planner.updateTask(id: self.id, text: self.text, tags: [self.tag])
+                        }
+                        self.presentationMode.wrappedValue.dismiss()
+                    }else{
+                        self.logic.planner.addtask(text: self.text, date: Date(), tags: [self.tag])
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
                 }, label: {
                     Image(systemName: "paperplane")
-                        .font(.system(size: 18, weight: .medium, design: .rounded))
+                        .font(.system(size: 22, weight: .medium, design: .rounded))
                         .foregroundColor(.white)
                         .opacity(self.text.count == 0 ? 0.3 : 1.0)
                 }).buttonStyle(ScaleButtonStyle())
+                
+                
+           
                 
                 
             }
@@ -60,9 +83,15 @@ struct AddView: View {
             ScrollView(.vertical, showsIndicators: false){
                 VStack(alignment: .leading, spacing: 10){
                     
-                    Text("Hello! Add a finished assignment.")
-                        .font(.custom("SourceCodePro-Regular", size: 14))
-                        .foregroundColor(Color.secondary.opacity(0.7))
+                    if (self.id == 0){
+                        Text("Hello! Add a finished assignment.")
+                            .font(.custom("SourceCodePro-Regular", size: 14))
+                            .foregroundColor(Color.secondary.opacity(0.7))
+                    }else{
+                        Text("You can correct the tags and text.")
+                            .font(.custom("SourceCodePro-Regular", size: 14))
+                            .foregroundColor(Color.secondary.opacity(0.7))
+                    }
                     
                     ColorView(color: self.$tag)
                     
@@ -76,8 +105,7 @@ struct AddView: View {
                         .padding(5)
                         .background(Color.secondary.opacity(0.2))
                         .cornerRadius(8)
-                        .frame(height: 500)
-                        .disableAutocorrection(true)
+                        .frame(height: 250)
                         .accentColor(.white)
                         .introspectTextView { field in
                             if (self.openView == false){
@@ -92,6 +120,8 @@ struct AddView: View {
                 Spacer()
             }
             .padding(.horizontal, 10)
+        }.onAppear{
+            UITextView.appearance().backgroundColor = .clear
         }
     }
     
@@ -121,7 +151,7 @@ struct ColorView: View {
                     }
                     .frame(width: 30, height: 30)
                 }).buttonStyle(ScaleButtonStyle())
-                    
+                
                 
                 Button(action: {
                     self.color = "green"
@@ -140,9 +170,9 @@ struct ColorView: View {
                     
                 }).buttonStyle(ScaleButtonStyle())
                 
-        
                 
-              
+                
+                
                 Button(action: {
                     self.color = "blue"
                 }, label: {
@@ -160,7 +190,7 @@ struct ColorView: View {
                     
                 }).buttonStyle(ScaleButtonStyle())
                 
-        
+                
                 Button(action: {
                     self.color = "red"
                 }, label: {
