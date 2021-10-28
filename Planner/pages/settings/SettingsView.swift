@@ -161,39 +161,39 @@ struct SettingsView: View {
                         
                     }.padding(.horizontal, 20)
                     
-//                    VStack(spacing: 10){
-//                        HStack{
-//                            Text("Widget color")
-//                                .font(Font.custom("Spectral-Medium", size: 20))
-//                            
-//                            Spacer()
-//                        }
-//                        .padding(.horizontal, 20)
-//                        
-//                        RoundedRectangle(cornerRadius: 8)
-//                            .fill(Color.secondary.opacity(0.2))
-//                            .padding(.horizontal, 20)
-//                            .frame(height: 2)
-//                        
-//                    }.padding(.bottom, 10)
-//                    
-//                    VStack(spacing: 10){
-//                        
-//                        HStack{
-//                            ColorPicker(
-//                                "Press circle",
-//                                selection: $selectedColor
-//                            )
-//                            
-//                            Spacer()
-//                            
-//                            RoundedRectangle(cornerRadius: 8)
-//                                .fill(self.selectedColor)
-//                                .frame(height: 25)
-//                            
-//                        }
-//                        
-//                    }.padding(.horizontal, 20)
+                    VStack(spacing: 10){
+                        HStack{
+                            Text("Widget color")
+                                .font(Font.custom("Spectral-Medium", size: 20))
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.secondary.opacity(0.2))
+                            .padding(.horizontal, 20)
+                            .frame(height: 2)
+                        
+                    }.padding(.bottom, 10)
+                    
+                    VStack(spacing: 10){
+                        
+                        HStack{
+                            ColorPicker(
+                                "Select",
+                                selection: $selectedColor
+                            )
+                            
+                            Spacer()
+                            
+                            RoundedRectangle(cornerRadius: 8)
+                                .fill(self.selectedColor)
+                                .frame(height: 25)
+                            
+                        }
+                        
+                    }.padding(.horizontal, 20)
 //                    
                     
                     
@@ -214,7 +214,8 @@ struct SettingsView: View {
                 let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
                 defaults!.set(self.logic.types, forKey: "types")
                 
-//                defaults!.set(self.selectedColor, forKey: "color")
+                let ui_color = self.selectedColor.uiColor()
+                defaults!.widgetColor = ui_color
                 
                 
                 WidgetCenter.shared.reloadAllTimelines()
@@ -239,6 +240,10 @@ struct SettingsView: View {
             self.blue = self.logic.getIcon(name: "blue")
             self.orange = self.logic.getIcon(name: "orange")
             self.purple = self.logic.getIcon(name: "purple")
+            
+            let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
+            self.selectedColor = defaults!.widgetColor?.suColor ?? Color.init(hex: "ffffff")
+            
         }
     }
 }

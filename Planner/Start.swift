@@ -14,34 +14,108 @@ struct Start: View {
     @State var open_type : Int = 0
 
     var body: some View {
-        ZStack(alignment: .bottomTrailing){
+        ZStack(alignment: .bottom){
             GeometryReader { proxy in
                 
                 let topEdge = proxy.safeAreaInsets.top
                 
                 HomeView(topEdge: topEdge)
+                    
                     .ignoresSafeArea(.all, edges: .top)
             }
             
-            Button(action: {
-                self.open_type = 0
-                self.showing_add.toggle()
-            }, label: {
-                ZStack{
-                    Circle()
-                        .fill(Color.white)
+            if #available(iOS 15.0, *) {
+                HStack{
+                    HStack{
+                        Image(systemName: "clock")
+                            .font(.system(size: 20))
+                            .foregroundColor(.white)
+                            .offset(y: -5)
+                        
+                        
+                        Text("\(self.logic.getDateString())")
+                            .font(Font.custom("Spectral-Medium", size: 20))
+                            .offset(y: -5)
+                    }.padding(.horizontal)
+                        
+                    Spacer()
+                    Button(action: {
+                        self.open_type = 0
+                        self.showing_add.toggle()
+                    }, label: {
+                        ZStack{
+                            Circle()
+                                .fill(Color.white)
+                            
+                            Image(systemName: "plus")
+                                .font(.system(size: 30, weight: .medium, design: .rounded))
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: 45, height: 45, alignment: .center)
+                        .padding()
+                        
+                        .clipped()
+                        
+                        
+                        
+                        
+                    })
+                        .offset(y: -5)
+                        .contentShape(Rectangle())
+                        .buttonStyle(ScaleButtonStyle())
+                }
+                .background(.ultraThinMaterial)
+                .cornerRadius(16)
+                
+            } else {
+                HStack{
+                    Image(systemName: "clock")
+                        .font(.system(size: 20))
+                        .foregroundColor(.white)
+                        .offset(y: -5)
                     
-                    Image(systemName: "plus")
-                        .font(.system(size: 30, weight: .medium, design: .rounded))
-                        .foregroundColor(.black)
-                }.frame(width: 45, height: 45, alignment: .center)
-                    .padding(.trailing)
-            })
-                .buttonStyle(ScaleButtonStyle())
+                    Text("\(self.logic.getDateString())")
+                        .font(Font.custom("Spectral-Medium", size: 26))
+                        .padding(.horizontal)
+                        .offset(y: -5)
+                        
+                    Spacer()
+                    Button(action: {
+                        self.open_type = 0
+                        self.showing_add.toggle()
+                    }, label: {
+                        ZStack{
+                            Circle()
+                                .fill(Color.white)
+                            
+                            Image(systemName: "plus")
+                                .font(.system(size: 30, weight: .medium, design: .rounded))
+                                .foregroundColor(.black)
+                        }
+                        .frame(width: 45, height: 45, alignment: .center)
+                        .padding()
+                        
+                        .clipped()
+                        
+                        
+                        
+                        
+                    })
+                        .offset(y: -5)
+                        .contentShape(Rectangle())
+                        .buttonStyle(ScaleButtonStyle())
+                }
+                .background(Color.black)
+                .cornerRadius(16)
+            }
+          
+                
             
             
         }
         .preferredColorScheme(.dark)
+        .ignoresSafeArea(.all, edges: .bottom)
+        .ignoresSafeArea(.keyboard)
         .sheet(isPresented: self.$showing_add) {
             if (self.open_type == 0){
                 AddView()

@@ -14,6 +14,8 @@ struct WidgetView: View {
     @State var found_defaults : Bool = false
     @State var maxValue = 1
     
+    @State var color : Color = Color.init(hex: "ffffff")
+    
     func getColor(integer: Int) -> Double{
         let color_ready = Double(Float(integer)/Float(self.maxValue))
         if (integer == self.maxValue){
@@ -34,7 +36,7 @@ struct WidgetView: View {
                         VStack(spacing: 5){
                             ForEach(column, id:\.self){ item in
                                 RoundedRectangle(cornerRadius: 2)
-                                    .fill(item > 0 && self.found_defaults == true ? Color.init(hex: "ffffff").opacity(getColor(integer: item)) : Color.init(hex: "626567").opacity(0.2))
+                                    .fill(item > 0 && self.found_defaults == true ? self.color.opacity(getColor(integer: item)) : Color.init(hex: "626567").opacity(0.2))
                                     .frame(width: 14, height: 14, alignment: .center)
                                     
                             }
@@ -50,6 +52,9 @@ struct WidgetView: View {
             
             let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
             let savedArray = defaults!.object(forKey: "nodes") as? [[Int]] ?? []
+            
+            
+            self.color = defaults!.widgetColor?.suColor ?? Color.init(hex: "ffffff")
             
             if (savedArray.count == 0){
                 

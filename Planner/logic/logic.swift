@@ -55,6 +55,19 @@ class Logic: ObservableObject, Identifiable {
         
     }
     
+    public func getDateString() -> String{
+        let format : String = "dd.MM.yyyy"
+        let date = Date()
+        let formatter = DateFormatter()
+        
+        formatter.dateFormat = format
+        let result = formatter.string(from: date)
+        
+        
+       return result
+        
+    }
+    
     @objc public func getDate(){
         let format : String = "dd.MM.yyyy"
         let date = Date()
