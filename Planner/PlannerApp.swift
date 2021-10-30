@@ -10,12 +10,12 @@ import UIKit
 import YandexMobileMetrica
 import YandexMobileMetricaPush
 
-//c6c8e30d-e1c2-4282-bff9-83838cb337a0
 
 @main
 struct PlannerApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+
     var body: some Scene {
         WindowGroup {
             Start()

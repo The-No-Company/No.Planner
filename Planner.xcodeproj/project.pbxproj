@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C702DC52721B5FB0021E688 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C702DC42721B5FB0021E688 /* Alamofire */; };
+		D41BDB4F272D6D2700B4E388 /* NoPlannerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D41BDB4E272D6D2700B4E388 /* NoPlannerWidget.intentdefinition */; };
 		D440C787271D754C00DB3463 /* YandexMobileMetricaPush in Frameworks */ = {isa = PBXBuildFile; productRef = D440C786271D754C00DB3463 /* YandexMobileMetricaPush */; };
 		D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAC27177F0500281A9D /* PlannerApp.swift */; };
 		D44C2BAF27177F0500281A9D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAE27177F0500281A9D /* Start.swift */; };
@@ -41,8 +42,6 @@
 		D44C2C2F2718677300281A9D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44C2C1A2718643500281A9D /* SwiftUI.framework */; };
 		D44C2C322718677300281A9D /* NoPlannerWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C312718677300281A9D /* NoPlannerWidget.swift */; };
 		D44C2C352718677400281A9D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D44C2C342718677400281A9D /* Assets.xcassets */; };
-		D44C2C372718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */; };
-		D44C2C382718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */; };
 		D44C2C3B2718677500281A9D /* NoPlannerWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		D44C2C412718691700281A9D /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C1027185CB400281A9D /* WidgetView.swift */; };
 		D44C2C45271896A600281A9D /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C44271896A600281A9D /* date.swift */; };
@@ -89,6 +88,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D41BDB28272D611900B4E388 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		D41BDB33272D611900B4E388 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
+		D41BDB4E272D6D2700B4E388 /* NoPlannerWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = NoPlannerWidget.intentdefinition; sourceTree = "<group>"; };
 		D44C2BA927177F0500281A9D /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44C2BAC27177F0500281A9D /* PlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerApp.swift; sourceTree = "<group>"; };
 		D44C2BAE27177F0500281A9D /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
@@ -121,7 +123,6 @@
 		D44C2C282718649800281A9D /* Planner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Planner.entitlements; sourceTree = "<group>"; };
 		D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NoPlannerWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44C2C312718677300281A9D /* NoPlannerWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoPlannerWidget.swift; sourceTree = "<group>"; };
-		D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = NoPlannerWidget.intentdefinition; sourceTree = "<group>"; };
 		D44C2C342718677400281A9D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D44C2C362718677400281A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D44C2C402718678200281A9D /* NoPlannerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPlannerWidgetExtension.entitlements; sourceTree = "<group>"; };
@@ -319,6 +320,8 @@
 			children = (
 				D44C2C182718643500281A9D /* WidgetKit.framework */,
 				D44C2C1A2718643500281A9D /* SwiftUI.framework */,
+				D41BDB28272D611900B4E388 /* Intents.framework */,
+				D41BDB33272D611900B4E388 /* IntentsUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -327,7 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				D44C2C312718677300281A9D /* NoPlannerWidget.swift */,
-				D44C2C332718677300281A9D /* NoPlannerWidget.intentdefinition */,
+				D41BDB4E272D6D2700B4E388 /* NoPlannerWidget.intentdefinition */,
 				D44C2C342718677400281A9D /* Assets.xcassets */,
 				D44C2C362718677400281A9D /* Info.plist */,
 			);
@@ -433,7 +436,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1300;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					D44C2BA827177F0500281A9D = {
@@ -528,7 +531,6 @@
 				D44C2BE327177FE400281A9D /* colors.swift in Sources */,
 				D44C2C02271781AD00281A9D /* logic.swift in Sources */,
 				D44C2C45271896A600281A9D /* date.swift in Sources */,
-				D44C2C382718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */,
 				D44C2C0B271821BD00281A9D /* gestures.swift in Sources */,
 				D44C2BE227177FE400281A9D /* strings.swift in Sources */,
 				D44C2BEC2717806700281A9D /* db.swift in Sources */,
@@ -565,9 +567,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41BDB4F272D6D2700B4E388 /* NoPlannerWidget.intentdefinition in Sources */,
 				D44C2C412718691700281A9D /* WidgetView.swift in Sources */,
 				D488773F2720BEB600557AFA /* colors.swift in Sources */,
-				D44C2C372718677400281A9D /* NoPlannerWidget.intentdefinition in Sources */,
 				D44C2C322718677300281A9D /* NoPlannerWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -716,6 +718,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Planner/Planner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Planner/Preview Content\"";
@@ -724,6 +727,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Planner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = No.Planner;
+				INFOPLIST_KEY_NSSiriUsageDescription = "Siri support is used to suggest shortcuts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -736,9 +740,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -752,6 +757,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Planner/Planner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Planner/Preview Content\"";
@@ -760,6 +766,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Planner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = No.Planner;
+				INFOPLIST_KEY_NSSiriUsageDescription = "Siri support is used to suggest shortcuts";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -772,9 +779,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -896,7 +904,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.NoPlannerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -925,7 +933,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.NoPlannerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
