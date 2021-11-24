@@ -9,10 +9,11 @@ import SwiftUI
 
 struct Start: View {
     @ObservedObject var logic: Logic = LogicAPI
+    @ObservedObject var analytics: Analytics = AnalyticsAPI
 
     @State private var showing_add = false
     @State var open_type : Int = 0
-
+    
     var body: some View {
         ZStack(alignment: .bottom){
             GeometryReader { proxy in
@@ -20,7 +21,7 @@ struct Start: View {
                 let topEdge = proxy.safeAreaInsets.top
                 
                 HomeView(topEdge: topEdge)
-                    
+                
                     .ignoresSafeArea(.all, edges: .top)
             }
             
@@ -37,7 +38,7 @@ struct Start: View {
                             .font(Font.custom("Spectral-Medium", size: 20))
                             .offset(y: -5)
                     }.padding(.horizontal)
-                        
+                    
                     Spacer()
                     Button(action: {
                         self.open_type = 0
@@ -78,9 +79,15 @@ struct Start: View {
                         .font(Font.custom("Spectral-Medium", size: 26))
                         .padding(.horizontal)
                         .offset(y: -5)
-                        
+                    
                     Spacer()
                     Button(action: {
+                        
+                        if (UserDefaults.standard.bool(forKey: "haptic")){
+                            let generator = UIImpactFeedbackGenerator(style: .light)
+                            generator.impactOccurred()
+                        }
+                        
                         self.open_type = 0
                         self.showing_add.toggle()
                     }, label: {
@@ -108,8 +115,8 @@ struct Start: View {
                 .background(Color.black)
                 .cornerRadius(16)
             }
-          
-                
+            
+            
             
             
         }
@@ -126,6 +133,12 @@ struct Start: View {
             }
         }
         .onAppear{
+            
+            SettingsAPI.setupPushNotifications()
+            self.analytics.register()
+            self.analytics.send(action: "open")
+            
+            
             self.logic.getDate()
             self.logic.planner.getTasks()
             self.logic.initTimer()

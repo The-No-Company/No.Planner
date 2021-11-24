@@ -25,7 +25,12 @@ struct TaskView: View {
         
         
         Button(action: {
-            print("BUTTON")
+            
+            if (UserDefaults.standard.bool(forKey: "haptic")){
+                let generator = UIImpactFeedbackGenerator(style: .light)
+                generator.impactOccurred()
+            }
+            
             self.showing_add.toggle()
         }, label: {
             VStack(alignment: .leading, spacing: 4){

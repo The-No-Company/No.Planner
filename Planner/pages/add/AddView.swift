@@ -19,7 +19,8 @@ struct AddView: View {
     
     @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var logic: Logic = LogicAPI
-    
+    @ObservedObject var analytics: Analytics = AnalyticsAPI
+
   
     
     var body: some View {
@@ -43,6 +44,7 @@ struct AddView: View {
                         DispatchQueue.main.async {
                             self.logic.planner.removeTask(id: self.id)
                         }
+                        self.analytics.send(action: "remove_task")
                         self.presentationMode.wrappedValue.dismiss()
                     }, label: {
                         Image(systemName: "xmark.circle")
@@ -53,15 +55,20 @@ struct AddView: View {
                 }
                 
                 Button(action: {
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
+                    if (UserDefaults.standard.bool(forKey: "haptic")){
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                    }
+                    
                     if (self.id != 0){
                         DispatchQueue.main.async {
                             self.logic.planner.updateTask(id: self.id, text: self.text, tags: [self.tag])
                         }
+                        self.analytics.send(action: "update_task")
                         self.presentationMode.wrappedValue.dismiss()
                     }else{
                         self.logic.planner.addtask(text: self.text, date: Date(), tags: [self.tag])
+                        self.analytics.send(action: "create_task")
                         self.presentationMode.wrappedValue.dismiss()
                     }
                 }, label: {

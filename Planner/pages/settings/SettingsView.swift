@@ -7,6 +7,7 @@
 
 import SwiftUI
 import WidgetKit
+import Combine
 
 struct SettingsView: View {
     
@@ -21,6 +22,12 @@ struct SettingsView: View {
     
     @Binding var close : Bool
     @State private var selectedColor = Color.white
+    
+    @State  var icloud : Bool = true
+    @State  var haptic : Bool = true
+    @State  var notifications : Bool = true
+    
+  
     
     var body: some View {
         VStack{
@@ -46,6 +53,134 @@ struct SettingsView: View {
                         
                     }.padding(.top)
                     //                    Block with information END
+                    
+                    VStack(spacing: 10){
+                        HStack{
+                            Text("General")
+                                .font(Font.custom("Spectral-Medium", size: 20))
+                            
+                            Spacer()
+                        }
+                        .padding(.horizontal, 20)
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.secondary.opacity(0.2))
+                            .padding(.horizontal, 20)
+                            .frame(height: 2)
+                        
+                    }
+                    .padding(.bottom, 10)
+                    
+                    
+                    VStack(spacing: 0){
+                        HStack{
+                            Text("Use Haptic Feedback")
+                                .font(.custom("SourceCodePro-Regular", size: 14))
+                                .fixedSize()
+                            
+                            Spacer()
+                            
+                            
+                            if #available(iOS 15.0, *) {
+                                Toggle("", isOn: $haptic)
+                                    .tint(Color.white)
+                            } else {
+                                Toggle("", isOn: $haptic)
+                                    .accentColor(Color.white)
+                            }
+                            
+                        }.onChange(of: Just(self.haptic)) { result in
+                            print("Haptic - \(self.haptic)")
+                            UserDefaults.standard.set(self.haptic, forKey: "haptic")
+                            
+                            if (self.haptic){
+                                AnalyticsAPI.send(action: "settings_haptic_true")
+                            }else{
+                                AnalyticsAPI.send(action: "settings_haptic_false")
+                            }
+                        }
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.secondary.opacity(0.2))
+                            .frame(height: 2)
+                            .padding(.vertical, 10)
+                        
+                        HStack{
+                            Text("Notifications")
+                                .font(.custom("SourceCodePro-Regular", size: 14))
+                                .fixedSize()
+                            
+                            Spacer()
+                            
+                            if #available(iOS 15.0, *) {
+                                Toggle("", isOn: $notifications)
+                                    .tint(Color.white)
+                            } else {
+                                Toggle("", isOn: $notifications)
+                                    .accentColor(Color.white)
+                            }
+                            
+                        }.onChange(of: Just(self.notifications)) { result in
+                            print("Notifications - \(self.notifications)")
+                            UserDefaults.standard.set(self.notifications, forKey: "notifications")
+                            
+                            if (self.notifications == false){
+                                let center = UNUserNotificationCenter.current()
+                                center.removeAllDeliveredNotifications()
+                                center.removeAllPendingNotificationRequests()
+                            }
+                            
+                            if (self.notifications == true){
+                                SettingsAPI.setupPushNotifications()
+                            }
+                            
+                            if (self.notifications){
+                                AnalyticsAPI.send(action: "settings_notifications_true")
+                            }else{
+                                AnalyticsAPI.send(action: "settings_notifications_false")
+                            }
+                            
+                        }
+                        
+                        RoundedRectangle(cornerRadius: 8)
+                            .fill(Color.secondary.opacity(0.2))
+                            .frame(height: 2)
+                            .padding(.vertical, 10)
+                        
+                        HStack{
+                            Text("iCloud Sync and Backup")
+                                .font(.custom("SourceCodePro-Regular", size: 14))
+                                .fixedSize()
+                            
+                            Spacer()
+                            
+                            if #available(iOS 15.0, *) {
+                                Toggle("", isOn: $icloud)
+                                    .tint(Color.white)
+                            } else {
+                                Toggle("", isOn: $icloud)
+                                    .accentColor(Color.white)
+                            }
+                            
+                        }.onChange(of: Just(self.icloud)) { result in
+                            print("iCloud - \(self.icloud)")
+                            UserDefaults.standard.set(self.icloud, forKey: "icloud")
+                            
+                            if (self.notifications){
+                                AnalyticsAPI.send(action: "settings_icloud_true")
+                            }else{
+                                AnalyticsAPI.send(action: "settings_icloud_false")
+                            }
+                            
+                        }
+                        
+                    }
+                    .padding(.horizontal)
+                    .padding(.vertical, 10)
+                    .background(Color.init(hex: "2A2A2A"))
+                    .cornerRadius(8)
+                    .padding(.horizontal, 20)
+                    
                     
                     VStack(spacing: 10){
                         HStack{
@@ -194,7 +329,7 @@ struct SettingsView: View {
                         }
                         
                     }.padding(.horizontal, 20)
-//                    
+                    //
                     
                     
                     Spacer()
@@ -243,6 +378,8 @@ struct SettingsView: View {
             
             let defaults = UserDefaults(suiteName: "group.thenoco.co.noplanner")
             self.selectedColor = defaults!.widgetColor?.suColor ?? Color.init(hex: "ffffff")
+            
+            UISwitch.appearance().thumbTintColor = UIColor.black.withAlphaComponent(0.85)
             
         }
     }

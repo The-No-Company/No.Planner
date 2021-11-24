@@ -1,0 +1,27 @@
+PODS:
+  - IceCream (2.0.2):
+    - RealmSwift
+  - Realm (10.19.0):
+    - Realm/Headers (= 10.19.0)
+  - Realm/Headers (10.19.0)
+  - RealmSwift (10.19.0):
+    - Realm (= 10.19.0)
+
+DEPENDENCIES:
+  - IceCream
+  - RealmSwift (= 10.19)
+
+SPEC REPOS:
+  trunk:
+    - IceCream
+    - Realm
+    - RealmSwift
+
+SPEC CHECKSUMS:
+  IceCream: 2772755afb39f79597e5dc250f4d3f891a65f870
+  Realm: 869ab2a7e3bdfa6bf06d8723251539f504e6f602
+  RealmSwift: f1f51c4a02fe826e5cea623b5441992f06bdc942
+
+PODFILE CHECKSUM: 9e9cb5c2c61efe00d92ae5afe6c1d8e3e062a7b4
+
+COCOAPODS: 1.10.1

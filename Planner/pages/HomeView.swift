@@ -11,11 +11,14 @@ import Introspect
 struct HomeView: View {
     @State private var showing_add = false
     @ObservedObject var logic: Logic = LogicAPI
-    
+    @State var search : Bool = false
+    @State var search_text : String = ""
     var topEdge: CGFloat
     
+    @State var scale: CGFloat = 0.8
     @State var header : String = ""
-    
+    @ObservedObject var analytics: Analytics = AnalyticsAPI
+
     @SwiftUI.Environment(\.presentationMode) private var presentationMode: Binding<PresentationMode>
     
     
@@ -68,8 +71,28 @@ struct HomeView: View {
                 Spacer()
                 
                 Button(action: {
-                    let generator = UIImpactFeedbackGenerator(style: .light)
-                    generator.impactOccurred()
+                    if (UserDefaults.standard.bool(forKey: "haptic")){
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                    }
+                    self.analytics.send(action: "search")
+                    withAnimation{
+                        self.search = true
+                    }
+                    
+                }, label: {
+                    Image(systemName: "magnifyingglass")
+                        .font(.system(size: 20, weight: .medium, design: .rounded))
+                        .foregroundColor(.white)
+                })
+                    .buttonStyle(ScaleButtonStyle())
+                    .padding(.trailing, 10)
+                
+                Button(action: {
+                    if (UserDefaults.standard.bool(forKey: "haptic")){
+                        let generator = UIImpactFeedbackGenerator(style: .light)
+                        generator.impactOccurred()
+                    }
                     
                     print("open_settings")
                     self.showing_add.toggle()
@@ -83,6 +106,47 @@ struct HomeView: View {
                 
             }
             .padding(.horizontal, 10)
+            
+            if (self.search == true){
+                HStack(spacing: 10){
+                    SearchBarView(text: self.$search_text)
+                        .introspectTextField { field in
+                            if (self.search == true){
+                                field.becomeFirstResponder()
+                            }
+                        }
+                    if (self.search_text.count > 0 || self.search_text.count == 0){
+                        Button(action: {
+                            withAnimation(Animation.easeInOut(duration: 0.2)) {
+                                self.search_text = ""
+                                self.search = false
+                            }
+                        }, label: {
+                            Image(systemName: "xmark.square")
+                                .font(.system(size: 16, weight: .medium, design: .rounded))
+                                .foregroundColor(.white)
+                        })
+                            .scaleEffect(scale)
+                            .onAppear {
+                                let baseAnimation = Animation.easeInOut(duration: 0.3)
+                                
+                                withAnimation(baseAnimation) {
+                                    scale = 1.0
+                                }
+                            }
+                            .onDisappear{
+                                let baseAnimation = Animation.easeInOut(duration: 0.3)
+                                
+                                withAnimation(baseAnimation) {
+                                    scale = 0.8
+                                }
+                            }
+                    }
+                }
+                .padding(.top, 5)
+                .padding(.horizontal, 10)
+            }
+            
             
             if (self.logic.planner.tasks.count == 0){
                 VStack(spacing: 0){
@@ -102,8 +166,10 @@ struct HomeView: View {
                 List(){
                     
                     ForEach(self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow}), id: \.self) { key in
-                        TaskBox(key: key)
-                            .listRowInsets(EdgeInsets())
+                        if (self.logic.planner.grouped[key]!.filter{ $0.text.lowercased().contains(self.search_text.lowercased()) || self.search_text.isEmpty}.count > 0){
+                            TaskBox(key: key, search_text: self.$search_text)
+                                .listRowInsets(EdgeInsets())
+                        }
                     }
                     Spacer()
                 }
@@ -160,13 +226,14 @@ struct TaskBox: View {
     
     @ObservedObject var logic: Logic = LogicAPI
     @State var key : Date
-    
+    @Binding var search_text : String
     @State var taskSelected : Planner.Tasks = Planner.Tasks(id: 0, text: "", date: Date(), display_date: "", tags: [])
     
     var body: some View {
         ZStack(alignment: .top){
             
             VStack(spacing: 5){
+                
                 
                 HStack{
                     GeometryReader { proxy -> Text in
@@ -191,9 +258,10 @@ struct TaskBox: View {
                 .background(Color.black)
                 .padding(.top, 10)
                 
+                
                 VStack(spacing: 15){
                     if (self.logic.planner.grouped[key] != nil){
-                        ForEach(self.logic.planner.grouped[key]!.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
+                        ForEach(self.logic.planner.grouped[key]!.filter{ $0.text.lowercased().contains(self.search_text.lowercased()) || self.search_text.isEmpty}.sorted(by: {$0.date.timeIntervalSinceNow > $1.date.timeIntervalSinceNow}), id: \.self){ task in
                             TaskView(id: task.id, text: task.text, time: task.display_date, date: task.date, tags_array: task.tags)
                         }
                     }

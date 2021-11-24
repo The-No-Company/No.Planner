@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import RealmSwift
+import IceCream
 
 var RealmAPI: RealmDB = RealmDB()
 
@@ -15,18 +16,20 @@ class RealmDB: ObservableObject, Identifiable {
     var id: Int = 0
     @ObservedObject var logic: Logic = LogicAPI
     
+    var syncEngine: SyncEngine?
     let realm : Realm
+    
     init() {
         let config = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 3,
+            schemaVersion: 4,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
                 // We haven’t migrated anything yet, so oldSchemaVersion == 0
-                if (oldSchemaVersion < 3) {
+                if (oldSchemaVersion < 4) {
                     // Nothing to do!
                     // Realm will automatically detect new properties and removed properties
                     // And will update the schema on disk automatically
@@ -131,6 +134,12 @@ class RealmDB: ObservableObject, Identifiable {
         
     }
     
+    func synciCloud(){
+        syncEngine = SyncEngine(objects: [
+            SyncObject(type: Task.self)
+        ])
+    }
+    
 }
 
 
@@ -141,6 +150,15 @@ open class Task: Object {
     @objc dynamic var date: Date = Date()
     @objc dynamic var display_date : String = ""
     
+    open override class func primaryKey() -> String? {
+        return "id"
+    }
     
+}
+
+extension Task: CKRecordConvertible & CKRecordRecoverable {
+    public var isDeleted: Bool {
+        false
+    }
 }
 
