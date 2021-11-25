@@ -12,6 +12,7 @@ struct HomeView: View {
     @State private var showing_add = false
     @ObservedObject var logic: Logic = LogicAPI
     @State var search : Bool = false
+    @State var respond : Bool = false
     @State var search_text : String = ""
     var topEdge: CGFloat
     
@@ -57,15 +58,19 @@ struct HomeView: View {
                     Text("No.Planner")
                         .font(Font.custom("Spectral-Medium", size: 26))
                     if (self.logic.planner.grouped.keys.count > 0){
-                        if (self.logic.minimum.date != self.logic.getDateToString(date: self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow})[0])){
-                            Text(self.logic.minimum.date)
-                                .font(Font.custom("Spectral-Medium", size: 18))
-                                .foregroundColor(Color.white.opacity(0.7))
-                        }else{
-                            Text("Today")
-                                .font(Font.custom("Spectral-Medium", size: 18))
-                                .foregroundColor(Color.white.opacity(0.7))
-                        }
+//                        if (self.logic.minimum.date != self.logic.getDateToString(date: self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow})[0])){
+//                            Text(self.logic.minimum.date)
+//                                .font(Font.custom("Spectral-Medium", size: 18))
+//                                .foregroundColor(Color.white.opacity(0.7))
+//                        }else{
+//                            Text("Today")
+//                                .font(Font.custom("Spectral-Medium", size: 18))
+//                                .foregroundColor(Color.white.opacity(0.7))
+//                        }
+                        
+                        Text("Add what's done")
+                            .font(Font.custom("Spectral-Medium", size: 18))
+                            .foregroundColor(Color.white.opacity(0.7))
                     }
                 }
                 Spacer()
@@ -76,6 +81,8 @@ struct HomeView: View {
                         generator.impactOccurred()
                     }
                     self.analytics.send(action: "search")
+                    
+                    
                     withAnimation{
                         self.search = true
                     }
@@ -111,7 +118,8 @@ struct HomeView: View {
                 HStack(spacing: 10){
                     SearchBarView(text: self.$search_text)
                         .introspectTextField { field in
-                            if (self.search == true){
+                            if (self.search == true && self.respond == false){
+                                self.respond = true
                                 field.becomeFirstResponder()
                             }
                         }
@@ -120,6 +128,7 @@ struct HomeView: View {
                             withAnimation(Animation.easeInOut(duration: 0.2)) {
                                 self.search_text = ""
                                 self.search = false
+                                self.respond = false
                             }
                         }, label: {
                             Image(systemName: "xmark.square")
@@ -166,7 +175,7 @@ struct HomeView: View {
                 List(){
                     
                     ForEach(self.logic.planner.grouped.keys.sorted(by: {$0.timeIntervalSinceNow > $1.timeIntervalSinceNow}), id: \.self) { key in
-                        if (self.logic.planner.grouped[key]!.filter{ $0.text.lowercased().contains(self.search_text.lowercased()) || self.search_text.isEmpty}.count > 0){
+                        if (self.logic.planner.grouped[key]!.filter{ $0.text.lowercased().contains(self.search_text.lowercased()) || self.search_text.isEmpty}.count > 0 ){
                             TaskBox(key: key, search_text: self.$search_text)
                                 .listRowInsets(EdgeInsets())
                         }
@@ -237,17 +246,17 @@ struct TaskBox: View {
                 
                 HStack{
                     GeometryReader { proxy -> Text in
-                        let y = proxy.frame(in: .global).maxY
-                        if (y < 100 && y > 0){
-                            DispatchQueue.main.async {
-                                self.logic.minimum.index = y
-                                if (self.logic.getDateToString(date: key) == "Today"){
-                                    self.logic.minimum.date = "~"
-                                }else{
-                                    self.logic.minimum.date = self.logic.getDateToString(date: key)
-                                }
-                            }
-                        }
+//                        let y = proxy.frame(in: .global).maxY
+//                        if (y < 100 && y > 0){
+//                            DispatchQueue.main.async {
+//                                self.logic.minimum.index = y
+//                                if (self.logic.getDateToString(date: key) == "Today"){
+//                                    self.logic.minimum.date = "~"
+//                                }else{
+//                                    self.logic.minimum.date = self.logic.getDateToString(date: key)
+//                                }
+//                            }
+//                        }
                         return Text(self.logic.getDateToString(date: key))
                             .font(Font.custom("Spectral-Medium", size: 26))
                     }

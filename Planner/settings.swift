@@ -88,7 +88,7 @@ class Settings: ObservableObject, Identifiable {
         
         PushNotification.allCases.forEach { (push) in
             let content = UNMutableNotificationContent()
-            content.title = "No.Emotion"
+            content.title = "No.Planner"
             content.body = push.rawValue
             content.sound = .default
             let trigger = UNCalendarNotificationTrigger(dateMatching: push.time, repeats: true)
@@ -119,12 +119,16 @@ enum PushNotification: String, CaseIterable {
         switch self {
         case .morning:
             components.hour = 11
+            components.minute = 25
         case .noon:
             components.hour = 14
+            components.minute = 25
         case .day:
             components.hour = 17
+            components.minute = 25
         case .evening:
             components.hour = 21
+            components.minute = 25
         }
         return components
     }
