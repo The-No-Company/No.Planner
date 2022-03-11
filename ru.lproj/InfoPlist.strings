@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Planner
+
+  Created by Michael Safir on 13.12.2021.
+  
+*/
+
+"CFBundleDisplayName" = "Задачник";
+"CFBundleName" = "Задачник";

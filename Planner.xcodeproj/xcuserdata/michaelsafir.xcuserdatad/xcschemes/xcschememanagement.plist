@@ -56,6 +56,11 @@
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
+		<key>SiriAddTasks.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -75,6 +80,11 @@
 			<true/>
 		</dict>
 		<key>D44C2C2C2718677300281A9D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D4BBB2E927661B1B007B965D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

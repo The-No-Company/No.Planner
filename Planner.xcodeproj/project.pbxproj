@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2C702DC52721B5FB0021E688 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2C702DC42721B5FB0021E688 /* Alamofire */; };
+		43DAD26E120E49005A611796 /* Pods_SiriAddTasks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A752E3F0235062BA16C6441D /* Pods_SiriAddTasks.framework */; };
 		5689BF607DC83B0E957889CB /* Pods_NoPlannerWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76ABC565FA7B7CD0A44041A9 /* Pods_NoPlannerWidgetExtension.framework */; };
 		88B35C2EBB6DB7CE25398B3D /* Pods_PlannerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E86A84A5FCF549FF4E6E325 /* Pods_PlannerTests.framework */; };
 		8BF169DBAD63FAB46A825030 /* Pods_Planner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887693E3D09EA3C12C736BDA /* Pods_Planner.framework */; };
@@ -15,6 +16,7 @@
 		D41BDB4F272D6D2700B4E388 /* NoPlannerWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D41BDB4E272D6D2700B4E388 /* NoPlannerWidget.intentdefinition */; };
 		D41F538F274EDFA8009A4919 /* analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41F538E274EDFA8009A4919 /* analytics.swift */; };
 		D41F5391274EE3EE009A4919 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41F5390274EE3EE009A4919 /* CloudKit.framework */; };
+		D4326D8727674CE500B535D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4326D8927674CE500B535D1 /* InfoPlist.strings */; };
 		D440C787271D754C00DB3463 /* YandexMobileMetricaPush in Frameworks */ = {isa = PBXBuildFile; productRef = D440C786271D754C00DB3463 /* YandexMobileMetricaPush */; };
 		D44C2BAD27177F0500281A9D /* PlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAC27177F0500281A9D /* PlannerApp.swift */; };
 		D44C2BAF27177F0500281A9D /* Start.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BAE27177F0500281A9D /* Start.swift */; };
@@ -51,6 +53,14 @@
 		D44C2C45271896A600281A9D /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C44271896A600281A9D /* date.swift */; };
 		D488773E27209C8300557AFA /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D488773D27209C8300557AFA /* WelcomeView.swift */; };
 		D488773F2720BEB600557AFA /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BDF27177FE400281A9D /* colors.swift */; };
+		D4BBB2EB27661B1B007B965D /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D41BDB28272D611900B4E388 /* Intents.framework */; };
+		D4BBB2EE27661B1B007B965D /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BBB2ED27661B1B007B965D /* IntentHandler.swift */; };
+		D4BBB2F227661B1B007B965D /* SiriAddTasks.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D4BBB2EA27661B1B007B965D /* SiriAddTasks.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D4BBB2FA276624D2007B965D /* db.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BEB2717806700281A9D /* db.swift */; };
+		D4BBB2FB276624DA007B965D /* logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C01271781AD00281A9D /* logic.swift */; };
+		D4BBB2FD276625AE007B965D /* colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2BDF27177FE400281A9D /* colors.swift */; };
+		D4BBB2FE276625B4007B965D /* date.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C44271896A600281A9D /* date.swift */; };
+		D4BBB2FF27662602007B965D /* WidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44C2C1027185CB400281A9D /* WidgetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +85,13 @@
 			remoteGlobalIDString = D44C2C2C2718677300281A9D;
 			remoteInfo = NoPlannerWidgetExtension;
 		};
+		D4BBB2F027661B1B007B965D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D44C2BA127177F0500281A9D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4BBB2E927661B1B007B965D;
+			remoteInfo = SiriAddTasks;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -84,6 +101,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				D4BBB2F227661B1B007B965D /* SiriAddTasks.appex in Embed App Extensions */,
 				D44C2C3B2718677500281A9D /* NoPlannerWidgetExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -95,6 +113,7 @@
 		0E09B385082BC093BD3347CD /* Pods-Planner-PlannerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Planner-PlannerUITests.release.xcconfig"; path = "Target Support Files/Pods-Planner-PlannerUITests/Pods-Planner-PlannerUITests.release.xcconfig"; sourceTree = "<group>"; };
 		45AD125198518D7EF0370ECF /* Pods-Planner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Planner.debug.xcconfig"; path = "Target Support Files/Pods-Planner/Pods-Planner.debug.xcconfig"; sourceTree = "<group>"; };
 		4C055DD0CD13F0347929C812 /* Pods-Planner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Planner.release.xcconfig"; path = "Target Support Files/Pods-Planner/Pods-Planner.release.xcconfig"; sourceTree = "<group>"; };
+		588390D573EFBBF9971F1976 /* Pods-SiriAddTasks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiriAddTasks.release.xcconfig"; path = "Target Support Files/Pods-SiriAddTasks/Pods-SiriAddTasks.release.xcconfig"; sourceTree = "<group>"; };
 		5AF6BB65AC4FCCCBD64E0BBB /* Pods-Planner-PlannerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Planner-PlannerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Planner-PlannerUITests/Pods-Planner-PlannerUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5D81CE8EEAFFAF10CD337091 /* Pods-NoPlannerWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoPlannerWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-NoPlannerWidgetExtension/Pods-NoPlannerWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
 		5E782552C3E5AEAA8BEF981E /* Pods-PlannerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlannerTests.debug.xcconfig"; path = "Target Support Files/Pods-PlannerTests/Pods-PlannerTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,11 +121,15 @@
 		5F43957B4AF92F5D44162C8F /* Pods-NoPlannerWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoPlannerWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-NoPlannerWidgetExtension/Pods-NoPlannerWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		76ABC565FA7B7CD0A44041A9 /* Pods_NoPlannerWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NoPlannerWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		887693E3D09EA3C12C736BDA /* Pods_Planner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Planner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A752E3F0235062BA16C6441D /* Pods_SiriAddTasks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SiriAddTasks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAABD859874FBB477103B1DA /* Pods-SiriAddTasks.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SiriAddTasks.debug.xcconfig"; path = "Target Support Files/Pods-SiriAddTasks/Pods-SiriAddTasks.debug.xcconfig"; sourceTree = "<group>"; };
 		D41BDB28272D611900B4E388 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		D41BDB33272D611900B4E388 /* IntentsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IntentsUI.framework; path = System/Library/Frameworks/IntentsUI.framework; sourceTree = SDKROOT; };
 		D41BDB4E272D6D2700B4E388 /* NoPlannerWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = NoPlannerWidget.intentdefinition; sourceTree = "<group>"; };
 		D41F538E274EDFA8009A4919 /* analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = analytics.swift; sourceTree = "<group>"; };
 		D41F5390274EE3EE009A4919 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		D4326D8827674CE500B535D1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4326D8A27674CE700B535D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D44C2BA927177F0500281A9D /* Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Planner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44C2BAC27177F0500281A9D /* PlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlannerApp.swift; sourceTree = "<group>"; };
 		D44C2BAE27177F0500281A9D /* Start.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Start.swift; sourceTree = "<group>"; };
@@ -125,7 +148,6 @@
 		D44C2BE027177FE400281A9D /* buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = buttons.swift; sourceTree = "<group>"; };
 		D44C2BE627177FED00281A9D /* SpectralMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SpectralMedium.ttf; sourceTree = "<group>"; };
 		D44C2BE727177FED00281A9D /* SourceCodeRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SourceCodeRegular.ttf; sourceTree = "<group>"; };
-		D44C2BEA2717803700281A9D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		D44C2BEB2717806700281A9D /* db.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = db.swift; sourceTree = "<group>"; };
 		D44C2BFF2717810100281A9D /* AddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		D44C2C01271781AD00281A9D /* logic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = logic.swift; sourceTree = "<group>"; };
@@ -144,6 +166,10 @@
 		D44C2C402718678200281A9D /* NoPlannerWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoPlannerWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D44C2C44271896A600281A9D /* date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = date.swift; sourceTree = "<group>"; };
 		D488773D27209C8300557AFA /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		D4BBB2EA27661B1B007B965D /* SiriAddTasks.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriAddTasks.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4BBB2ED27661B1B007B965D /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		D4BBB2EF27661B1B007B965D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4BBB30027662805007B965D /* SiriAddTasks.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SiriAddTasks.entitlements; sourceTree = "<group>"; };
 		E462ABB14404D70DB6090F70 /* Pods-PlannerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlannerTests.release.xcconfig"; path = "Target Support Files/Pods-PlannerTests/Pods-PlannerTests.release.xcconfig"; sourceTree = "<group>"; };
 		F092106030408C837803C12F /* Pods_Planner_PlannerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Planner_PlannerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -189,6 +215,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4BBB2E727661B1B007B965D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4BBB2EB27661B1B007B965D /* Intents.framework in Frameworks */,
+				43DAD26E120E49005A611796 /* Pods_SiriAddTasks.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -203,6 +238,8 @@
 				0E09B385082BC093BD3347CD /* Pods-Planner-PlannerUITests.release.xcconfig */,
 				5E782552C3E5AEAA8BEF981E /* Pods-PlannerTests.debug.xcconfig */,
 				E462ABB14404D70DB6090F70 /* Pods-PlannerTests.release.xcconfig */,
+				CAABD859874FBB477103B1DA /* Pods-SiriAddTasks.debug.xcconfig */,
+				588390D573EFBBF9971F1976 /* Pods-SiriAddTasks.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -210,11 +247,13 @@
 		D44C2BA027177F0500281A9D = {
 			isa = PBXGroup;
 			children = (
+				D4326D8927674CE500B535D1 /* InfoPlist.strings */,
 				D44C2C402718678200281A9D /* NoPlannerWidgetExtension.entitlements */,
 				D44C2BAB27177F0500281A9D /* Planner */,
 				D44C2BBC27177F0700281A9D /* PlannerTests */,
 				D44C2BC627177F0700281A9D /* PlannerUITests */,
 				D44C2C302718677300281A9D /* NoPlannerWidget */,
+				D4BBB2EC27661B1B007B965D /* SiriAddTasks */,
 				D44C2C172718643500281A9D /* Frameworks */,
 				D44C2BAA27177F0500281A9D /* Products */,
 				2055294AC242BF3D5B1EAD93 /* Pods */,
@@ -228,6 +267,7 @@
 				D44C2BB927177F0700281A9D /* PlannerTests.xctest */,
 				D44C2BC327177F0700281A9D /* PlannerUITests.xctest */,
 				D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */,
+				D4BBB2EA27661B1B007B965D /* SiriAddTasks.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -236,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				D44C2C282718649800281A9D /* Planner.entitlements */,
-				D44C2BEA2717803700281A9D /* Info.plist */,
 				D44C2BDB27177FD700281A9D /* settings.swift */,
 				D44C2BE527177FED00281A9D /* fonts */,
 				D44C2BD827177F6C00281A9D /* logic */,
@@ -365,6 +404,7 @@
 				887693E3D09EA3C12C736BDA /* Pods_Planner.framework */,
 				F092106030408C837803C12F /* Pods_Planner_PlannerUITests.framework */,
 				5E86A84A5FCF549FF4E6E325 /* Pods_PlannerTests.framework */,
+				A752E3F0235062BA16C6441D /* Pods_SiriAddTasks.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -388,6 +428,16 @@
 			path = welcome;
 			sourceTree = "<group>";
 		};
+		D4BBB2EC27661B1B007B965D /* SiriAddTasks */ = {
+			isa = PBXGroup;
+			children = (
+				D4BBB30027662805007B965D /* SiriAddTasks.entitlements */,
+				D4BBB2ED27661B1B007B965D /* IntentHandler.swift */,
+				D4BBB2EF27661B1B007B965D /* Info.plist */,
+			);
+			path = SiriAddTasks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -406,6 +456,7 @@
 			);
 			dependencies = (
 				D44C2C3A2718677400281A9D /* PBXTargetDependency */,
+				D4BBB2F127661B1B007B965D /* PBXTargetDependency */,
 			);
 			name = Planner;
 			packageProductDependencies = (
@@ -476,6 +527,24 @@
 			productReference = D44C2C2D2718677300281A9D /* NoPlannerWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		D4BBB2E927661B1B007B965D /* SiriAddTasks */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4BBB2F527661B1C007B965D /* Build configuration list for PBXNativeTarget "SiriAddTasks" */;
+			buildPhases = (
+				C411FF8E6446EB1D84A311D4 /* [CP] Check Pods Manifest.lock */,
+				D4BBB2E627661B1B007B965D /* Sources */,
+				D4BBB2E727661B1B007B965D /* Frameworks */,
+				D4BBB2E827661B1B007B965D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SiriAddTasks;
+			productName = SiriAddTasks;
+			productReference = D4BBB2EA27661B1B007B965D /* SiriAddTasks.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -500,6 +569,9 @@
 					D44C2C2C2718677300281A9D = {
 						CreatedOnToolsVersion = 13.0;
 					};
+					D4BBB2E927661B1B007B965D = {
+						CreatedOnToolsVersion = 13.1;
+					};
 				};
 			};
 			buildConfigurationList = D44C2BA427177F0500281A9D /* Build configuration list for PBXProject "Planner" */;
@@ -509,6 +581,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = D44C2BA027177F0500281A9D;
 			packageReferences = (
@@ -526,6 +599,7 @@
 				D44C2BB827177F0700281A9D /* PlannerTests */,
 				D44C2BC227177F0700281A9D /* PlannerUITests */,
 				D44C2C2C2718677300281A9D /* NoPlannerWidgetExtension */,
+				D4BBB2E927661B1B007B965D /* SiriAddTasks */,
 			);
 		};
 /* End PBXProject section */
@@ -536,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C2BB427177F0700281A9D /* Preview Assets.xcassets in Resources */,
+				D4326D8727674CE500B535D1 /* InfoPlist.strings in Resources */,
 				D44C2BE827177FED00281A9D /* SpectralMedium.ttf in Resources */,
 				D44C2BB127177F0700281A9D /* Assets.xcassets in Resources */,
 				D44C2C05271785EF00281A9D /* Launch Screen.storyboard in Resources */,
@@ -562,6 +637,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D44C2C352718677400281A9D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D4BBB2E827661B1B007B965D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -668,6 +750,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Planner/Pods-Planner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C411FF8E6446EB1D84A311D4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SiriAddTasks-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D38B6AB99DF0B6EE333A5BCC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,6 +850,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D4BBB2E627661B1B007B965D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4BBB2FF27662602007B965D /* WidgetView.swift in Sources */,
+				D4BBB2EE27661B1B007B965D /* IntentHandler.swift in Sources */,
+				D4BBB2FE276625B4007B965D /* date.swift in Sources */,
+				D4BBB2FD276625AE007B965D /* colors.swift in Sources */,
+				D4BBB2FB276624DA007B965D /* logic.swift in Sources */,
+				D4BBB2FA276624D2007B965D /* db.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -764,7 +881,24 @@
 			target = D44C2C2C2718677300281A9D /* NoPlannerWidgetExtension */;
 			targetProxy = D44C2C392718677400281A9D /* PBXContainerItemProxy */;
 		};
+		D4BBB2F127661B1B007B965D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D4BBB2E927661B1B007B965D /* SiriAddTasks */;
+			targetProxy = D4BBB2F027661B1B007B965D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D4326D8927674CE500B535D1 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4326D8827674CE500B535D1 /* ru */,
+				D4326D8A27674CE700B535D1 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		D44C2BCB27177F0700281A9D /* Debug */ = {
@@ -913,7 +1047,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -953,7 +1087,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1083,7 +1217,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.NoPlannerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1113,13 +1247,69 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.NoPlannerWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D4BBB2F327661B1C007B965D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAABD859874FBB477103B1DA /* Pods-SiriAddTasks.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SiriAddTasks/SiriAddTasks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GAH72SPMY9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SiriAddTasks/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SiriAddTasks;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.SiriAddTasks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4BBB2F427661B1C007B965D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 588390D573EFBBF9971F1976 /* Pods-SiriAddTasks.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = SiriAddTasks/SiriAddTasks.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = GAH72SPMY9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SiriAddTasks/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = SiriAddTasks;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = thenoco.co.NoPlanner.SiriAddTasks;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -1167,6 +1357,15 @@
 			buildConfigurations = (
 				D44C2C3D2718677500281A9D /* Debug */,
 				D44C2C3E2718677500281A9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4BBB2F527661B1C007B965D /* Build configuration list for PBXNativeTarget "SiriAddTasks" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4BBB2F327661B1C007B965D /* Debug */,
+				D4BBB2F427661B1C007B965D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

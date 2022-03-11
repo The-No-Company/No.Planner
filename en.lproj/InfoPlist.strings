@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Planner
+
+  Created by Michael Safir on 13.12.2021.
+  
+*/
+"CFBundleDisplayName" = "No.Planner";
+"CFBundleName" = "No.Planner";

@@ -223,13 +223,7 @@ struct ProgressBarView: View {
     }
 }
 
-var minimum : minimumStructure = minimumStructure(date: "", index: 0)
 
-struct minimumStructure : Identifiable, Hashable{
-    var id = 0
-    var date : String
-    var index : CGFloat
-}
 
 struct TaskBox: View {
     

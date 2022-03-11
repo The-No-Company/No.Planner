@@ -6,13 +6,16 @@
 //
 
 import SwiftUI
+import Intents
 
 struct Start: View {
     @ObservedObject var logic: Logic = LogicAPI
     @ObservedObject var analytics: Analytics = AnalyticsAPI
-
+    
     @State private var showing_add = false
     @State var open_type : Int = 0
+    
+    @Environment(\.scenePhase) private var scenePhase
     
     var body: some View {
         ZStack(alignment: .bottom){
@@ -132,6 +135,12 @@ struct Start: View {
                 WelcomeView(close: self.$showing_add)
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            print("app open")
+            self.analytics.send(action: "open")
+            self.logic.getDate()
+            self.logic.planner.getTasks()
+        }
         .onAppear{
             
             SettingsAPI.setupPushNotifications()
@@ -152,6 +161,11 @@ struct Start: View {
                 self.open_type = 1
                 self.showing_add.toggle()
             }
+        }
+        .onChange(of: scenePhase) { phase in
+            INPreferences.requestSiriAuthorization({status in
+                
+            })
         }
     }
 }

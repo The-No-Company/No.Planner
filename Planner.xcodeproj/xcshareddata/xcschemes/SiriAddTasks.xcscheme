@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1310"
+   wasCreatedForAppExtension = "YES"
+   version = "2.0">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D4BBB2E927661B1B007B965D"
+               BuildableName = "SiriAddTasks.appex"
+               BlueprintName = "SiriAddTasks"
+               ReferencedContainer = "container:Planner.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D44C2BA827177F0500281A9D"
+               BuildableName = "Planner.app"
+               BlueprintName = "Planner"
+               ReferencedContainer = "container:Planner.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      intentQueryString = "&#x414;&#x43e;&#x431;&#x430;&#x432;&#x44c; &#x441;&#x43e;&#x431;&#x430;&#x43a;&#x430; &#x432;  &#x433;&#x440;&#x443;&#x43f;&#x43f;&#x443; &#x437;&#x435;&#x43b;&#x435;&#x43d;&#x44b;&#x439; &#x440;&#x430;&#x437;&#x434;&#x435;&#x43b; &#x432; &#x417;&#x430;&#x434;&#x430;&#x447;&#x43d;&#x438;&#x43a;"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
+      launchStyle = "0"
+      askForAppToLaunch = "Yes"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES"
+      launchAutomaticallySubstyle = "2">
+      <RemoteRunnable
+         runnableDebuggingMode = "2"
+         BundleIdentifier = "com.apple.notificationcenterui">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D4BBB2E927661B1B007B965D"
+            BuildableName = "SiriAddTasks.appex"
+            BlueprintName = "SiriAddTasks"
+            ReferencedContainer = "container:Planner.xcodeproj">
+         </BuildableReference>
+      </RemoteRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D44C2BA827177F0500281A9D"
+            BuildableName = "Planner.app"
+            BlueprintName = "Planner"
+            ReferencedContainer = "container:Planner.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      intentQueryString = "&#x414;&#x43e;&#x431;&#x430;&#x432;&#x44c; &#x441;&#x43e;&#x431;&#x430;&#x43a;&#x430; &#x432;  &#x433;&#x440;&#x443;&#x43f;&#x43f;&#x443; &#x437;&#x435;&#x43b;&#x435;&#x43d;&#x44b;&#x439; &#x440;&#x430;&#x437;&#x434;&#x435;&#x43b; &#x432; &#x417;&#x430;&#x434;&#x430;&#x447;&#x43d;&#x438;&#x43a;"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES"
+      launchAutomaticallySubstyle = "2">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "D44C2BA827177F0500281A9D"
+            BuildableName = "Planner.app"
+            BlueprintName = "Planner"
+            ReferencedContainer = "container:Planner.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Debug">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>

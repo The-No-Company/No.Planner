@@ -30,3 +30,14 @@ target 'Planner' do
   end
 
 end
+
+
+target 'SiriAddTasks' do
+
+  use_frameworks!
+
+  # Pods for NoEmotion
+  pod 'IceCream'
+  pod 'RealmSwift', '10.19'
+
+end
